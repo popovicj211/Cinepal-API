@@ -14,13 +14,14 @@ class BaseService
               $this->rimg = $rimg;
     }
 
-    public function generatePagedResponse(Model $model, $perPage, $page)
+    public function generatePagedResponse(Model $model, $perPage, $page )
     {
 
         if ($page) {
             $model->offset(($page - 1) * $perPage)->limit($perPage);
         }
-        return $model->get();
+
+        return array('movies' => $model->get(), 'count' => $model->count());
     }
 
 

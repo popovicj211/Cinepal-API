@@ -9,8 +9,10 @@ use App\Http\Requests\CategoriesRequest;
 use App\Models\Categories;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+
 class CategoriesService extends BaseService implements CategoriesContract
 {
+    private static $tenology = 2;
     public function __construct($rimg = null)
     {
         parent::__construct($rimg);
@@ -48,6 +50,25 @@ class CategoriesService extends BaseService implements CategoriesContract
             return $catDTO;
 
     }
+
+    public function getCategoryMovie(int $movie ){
+        $categories = DB::table('categories as c')->select('c.*')->join('movies_categories as mc' , 'c.id' , '=' , 'mc.category_id')->where([['mc.movie_id'  , $movie],['subcategory_id' , self::$tenology]])->get();
+        $catArr = [];
+
+        foreach ($categories as $cat)
+        {
+            $catDTO = new CategoriesDTO();
+
+            $catDTO->id = $cat->id;
+            $catDTO->name = $cat->name;
+            $catDTO->sub = $cat->subcategory_id;
+
+            $catArr[] = $catDTO;
+        }
+
+        return $catArr;
+    }
+
 
     public function addCategory(CategoriesRequest $request)
     {

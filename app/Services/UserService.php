@@ -51,17 +51,30 @@ class UserService extends BaseService implements UserContract
 
            public function findUser(int $id): UserDTO
            {
-               $user = User::find($id);
+               $user = User::with('role')->findOrFail($id);
+               if($user != null) {
+                   $userDTO = new UserDTO();
+                   $userDTO->id = $user->id;
+                   $userDTO->name = $user->name;
+                   $userDTO->username = $user->username;
+                   $userDTO->email = $user->email;
+                   $userDTO->role = $user->role->name;
+                   return $userDTO;
+               }
+           }
 
+       public function loginUser(string $email , string $password): UserDTO
+       {
+        $user = User::with('role')->where([['email' , '=', $email] , [ 'password' , '=' , Hash::make($password) ]])->first();
                $userDTO = new UserDTO();
                $userDTO->id = $user->id;
                $userDTO->name = $user->name;
+                $userDTO->username = $user->username;
                $userDTO->email = $user->email;
                $userDTO->role = $user->role->name;
 
                return $userDTO;
-
-           }
+      }
 
          public function addUser(UserRequest $request)
          {

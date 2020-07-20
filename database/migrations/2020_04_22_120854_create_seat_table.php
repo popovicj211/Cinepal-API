@@ -17,7 +17,7 @@ class CreateSeatTable extends Migration
             $table->increments('id');
             $table->integer('number')->unique();
             $table->unsignedInteger('re_id');
-            $table->foreign('re_id')->references('id')->on('reservation');
+            $table->foreign('re_id')->references('id')->on('reservation')->onDelete('cascade');
             $table->timestamps();
         });
     }

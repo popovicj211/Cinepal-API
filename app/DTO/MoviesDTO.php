@@ -16,4 +16,5 @@ class MoviesDTO
        public $categories;
        public $tehnologies;
        public $actors;
+       public $price;
 }

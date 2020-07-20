@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PricelistRequest extends FormRequest
+class SeatcheckerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,18 @@ class PricelistRequest extends FormRequest
     public function rules()
     {
         return [
-            'movieId' => 'required|numeric',
-             'catId' => 'required|numeric',
-             'price' => 'required|regex:/^[0-9]{0,4}(\.)[0-9]{1,2}$/'
+              'seat' => 'required|numeric',
+                'free' => 'in:1,0'
         ];
     }
 
     public function messages()
     {
         return [
-            'movieId.required' => 'Movie is required',
-            'catId.required' => 'Tehnology is required',
-            'price.required' => 'Price is required',
-            'price.regex' => 'Price not valid'
+            'seat.required' => 'Seat number is required',
+            'seat.max' => 'Seat number must have max length 4 numbers'
+
         ];
     }
+
 }

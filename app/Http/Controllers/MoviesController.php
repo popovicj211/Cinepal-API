@@ -27,9 +27,9 @@ class MoviesController extends ApiController
                 $this->result['movies'] = $this->Ok($this->data['movies']);
             } catch (QueryException $e) {
                 Log::error("Error, get movies:" . $e->getMessage());
-                $this->result['movies'] = $this->ServerError("Error ,new movies can't get from server");
+                $this->result['movies'] = $this->ServerError("Error  movies can't get from server");
             }catch (ModelNotFoundException $e){
-                $this->result['movies'] = $this->NotFound("Movie not found");
+                $this->result['movies'] = $this->NotFound("Movies not found");
             }
 
         return $this->result['movies'];
@@ -45,7 +45,7 @@ class MoviesController extends ApiController
             Log::error("Error, new movies data:" . $e->getMessage());
             $this->result['newMoviesNews'] = $this->ServerError("Error , new movies can't get from server");
         }catch (ModelNotFoundException $e){
-            $this->result['newMoviesNews'] = $this->NotFound("Movie not found");
+            $this->result['newMoviesNews'] = $this->NotFound("New movies not found");
         }
 
         return $this->result['newMoviesNews'];
@@ -54,9 +54,8 @@ class MoviesController extends ApiController
 
     public function getMoviesCategories($cat , $id , PaginateRequest $request)
     {
-
-        $this->data['moviesCat'] = $this->service->getMoviesCategories( $cat , $id, $request);
         try {
+            $this->data['moviesCat'] = $this->service->getMoviesCategories( $cat , $id, $request);
             $this->result['moviesCat'] = $this->Ok($this->data['moviesCat']);
         } catch (QueryException $e) {
             Log::error("Error, filtering movies by category:" . $e->getMessage());
@@ -68,7 +67,20 @@ class MoviesController extends ApiController
         return $this->result['moviesCat'];
     }
 
+    public function getMovie($id)
+    {
+        try {
+            $this->data['movie'] = $this->service->getMovie( $id);
+            $this->result['movie'] = $this->Ok($this->data['movie']);
+        } catch (QueryException $e) {
+            Log::error("Error, movie:" . $e->getMessage());
+            $this->result['movie'] = $this->ServerError("Error ,movie can't get from server");
+        }catch (ModelNotFoundException $e){
+            $this->result['movie'] = $this->NotFound("Movie not found");
+        }
 
+        return $this->result['movie'];
+    }
 
 
 }

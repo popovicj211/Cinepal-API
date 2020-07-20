@@ -17,10 +17,8 @@ class CreateReservationTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('movie_id');
-            $table->unsignedInteger('pl_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
-            $table->foreign('pl_id')->references('id')->on('pricelist')->onDelete('cascade');
             $table->integer('qtypersons')->unsigned();
             $table->decimal('totalprice')->unsigned();
             $table->dateTime('datefrom');

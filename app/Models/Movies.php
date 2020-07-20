@@ -29,5 +29,9 @@ class Movies extends  Model
         return $this->hasOne(Reservation::class);
     }
 
+    public function  pricelist(){
+        return $this->hasMany( Pricelists::class, 'movie_id' , 'id');
+    }
+
 
 }

@@ -17,7 +17,7 @@ class Categories extends Model
     }
 
     public function pricelist(){
-            return $this->hasOne(Pricelists::class );
+            return $this->hasMany( Pricelists::class, 'cat_id'  , 'id');
     }
 
     public function category()
