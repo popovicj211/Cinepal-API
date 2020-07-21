@@ -39,7 +39,7 @@ class MoviesService extends BaseService implements MoviesContract
         $moviesArr = [];
 
 
-       foreach ($moviesPag as $movie)
+       foreach ($moviesPag['movies'] as $movie)
         {
             $moviesDTO = new MoviesDTO();
         //1588291200
@@ -54,18 +54,20 @@ class MoviesService extends BaseService implements MoviesContract
             $moviesDTO->runtime = $movie->running_time;
             $moviesDTO->img = $movie->img->link;
             $moviesDTO->year = $movie->year->year;
-            $categories = Mapper::maping($movie->category, 1 );
-            $tehnologies = Mapper::maping($movie->category,2 );
-            $actors = Mapper::maping($movie->actors  );
+            $categories = Mapper::maping($movie->category, 'name',1 );
+            $tehnologies = Mapper::maping($movie->category,'name',2 );
+            $actors = Mapper::maping($movie->actors, 'name'  );
             $moviesDTO->categories = $categories;
             $moviesDTO->tehnologies = $tehnologies;
             $moviesDTO->actors = $actors;
-
+            $priceList = Mapper::maping($movie->pricelist , 'price');
+            $moviesDTO->price = $priceList;
 
             $moviesArr[] = $moviesDTO;
         }
 
-        return $moviesArr;
+       // return $moviesArr;
+        return array('movies' =>  $moviesArr , 'count' => $moviesPag['count']);
     }
 
     public function getNewMovies(): array
@@ -94,13 +96,14 @@ class MoviesService extends BaseService implements MoviesContract
             $moviesDTO->runtime = $movie->running_time;
             $moviesDTO->img = $movie->img->link;
             $moviesDTO->year = $movie->year->year;
-            $categories = Mapper::maping($movie->category, 1 );
-            $tehnologies = Mapper::maping($movie->category,2 );
-            $actors = Mapper::maping($movie->actors  );
+            $categories = Mapper::maping($movie->category, 'name',1 );
+            $tehnologies = Mapper::maping($movie->category, 'name',2 );
+            $actors = Mapper::maping($movie->actors , 'name'  );
             $moviesDTO->categories = $categories;
             $moviesDTO->tehnologies = $tehnologies;
             $moviesDTO->actors = $actors;
-
+            $priceList = Mapper::maping($movie->pricelist , 'price');
+            $moviesDTO->price = $priceList;
             $moviesNewArr[] = $moviesDTO;
         }
 
@@ -113,41 +116,36 @@ class MoviesService extends BaseService implements MoviesContract
         $page = $request->get('page');
         $perPage = $request->get('perPage');
 
-       $moviesCategories = Movies::with(['img' , 'year' , 'category' => function($query) use ($cat, $id) {
-           $query->where([['subcategory_id' , '=' , $cat],['categories.id' , '=' , $id]]);
-        }, 'actors'])->get();
-     //   $moviesCatPag = $this->generatePagedResponse($moviesCategories, $perPage , $page);
-
+        $moviesCategories = Movies::with(['img' , 'year' , 'category' => function($query) use ($cat, $id) {
+            $query->where([['categories.subcategory_id' , '=' , $cat],['categories.id' , '=' , $id]]);
+        }, 'actors' , 'pricelist']);
+        $moviesCatPag = $this->generatePagedResponse($moviesCategories, $perPage , $page );
+        $catCount = DB::table('movies as m')->select('m.*' , 'c.subcategory_id')->join('movies_categories as mc' , 'm.id' , '=' , 'mc.movie_id')->join('categories as c' , 'mc.category_id' , '=' , 'c.id')->where('c.id','=' , $id)->count();
         $moviesCatArr = [];
 
+        foreach ($moviesCatPag['movies'] as $movie) {
+            $moviesDTO = new MoviesDTO();
 
-            foreach ($moviesCategories as $movie) {
-                $moviesDTO = new MoviesDTO();
-
-
-                $moviesDTO->id = $movie->id;
-                $moviesDTO->name = $movie->name;
-                $moviesDTO->desc = $movie->description;
-                $moviesDTO->rel = Carbon::parse($movie->release_date)->toDateTimeString();
-                $moviesDTO->runtime = $movie->running_time;
-                $moviesDTO->img = $movie->img->link;
-                $moviesDTO->year = $movie->year->year;
-
-                $categories = Mapper::maping($movie->category, 1 );
-                $tehnologies = Mapper::maping($movie->category,2 );
-                $actors = Mapper::maping($movie->actors  );
-
-                $moviesDTO->categories = $categories;
-                $moviesDTO->tehnologies = $tehnologies;
-                $moviesDTO->actors = $actors;
-
-                  if(count($movie->category) > 0) {
-                      $moviesCatArr[] = $moviesDTO;
-                  }
+            $moviesDTO->id = $movie->id;
+            $moviesDTO->name = $movie->name;
+            $moviesDTO->desc = $movie->description;
+            $moviesDTO->rel = Carbon::parse($movie->release_date)->toDateTimeString();
+            $moviesDTO->runtime = $movie->running_time;
+            $moviesDTO->img = $movie->img->link;
+            $moviesDTO->year = $movie->year->year;
+            $categories = Mapper::maping($movie->category, 'name' ,1 );
+            $tehnologies = Mapper::maping($movie->category,'name',2 );
+            $actors = Mapper::maping($movie->actors , 'name');
+            $moviesDTO->categories = $categories;
+            $moviesDTO->tehnologies = $tehnologies;
+            $moviesDTO->actors = $actors;
+            $priceList = Mapper::maping($movie->pricelist , 'price');
+            $moviesDTO->price = $priceList;
+            if(count($movie->category) > 0) {
+                $moviesCatArr[] = $moviesDTO;
             }
-
-
-            return $moviesCatArr;
+        }
+        return array('movies' =>  $moviesCatArr , 'count' => $catCount);
 
 
     }
@@ -167,11 +165,11 @@ class MoviesService extends BaseService implements MoviesContract
         $movieDTO->runtime = $movie->running_time;
         $movieDTO->img = $movie->img->id;
         $movieDTO->year = $movie->year->id;
-       $categories = Mapper::maping($movie->category, 1);
+       $categories = Mapper::maping($movie->category, 'name',1);
         $movieDTO->categories = $categories;
-        $tehnologies = Mapper::maping($movie->category,2 );
+        $tehnologies = Mapper::maping($movie->category, 'name',2 );
         $movieDTO->tehnologies = $tehnologies;
-        $actors = Mapper::maping($movie->actors );
+        $actors = Mapper::maping($movie->actors , 'name');
         $movieDTO->actors = $actors;
         return $movieDTO;
     }
