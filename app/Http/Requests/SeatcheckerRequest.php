@@ -24,8 +24,8 @@ class SeatcheckerRequest extends FormRequest
     public function rules()
     {
         return [
-              'seat' => 'required|numeric',
-                'free' => 'in:1,0'
+              'seat' => 'required|array',
+               'free' => 'required|number'
         ];
     }
 
@@ -33,8 +33,7 @@ class SeatcheckerRequest extends FormRequest
     {
         return [
             'seat.required' => 'Seat number is required',
-            'seat.max' => 'Seat number must have max length 4 numbers'
-
+             'free.required' => 'Free number is required'
         ];
     }
 

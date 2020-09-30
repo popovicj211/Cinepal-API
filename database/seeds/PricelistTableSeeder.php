@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\MoviesCategories;
-class MoviesCategoriesTableSeeder extends Seeder
+use App\Models\Pricelists;
+
+class PricelistTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class MoviesCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-                  factory(MoviesCategories::class , 22)->create();
+        factory(Pricelists::class , 10)->create();
     }
 }

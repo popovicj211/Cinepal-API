@@ -10,9 +10,12 @@ use App\Http\Requests\PaginateRequest;
 use App\Http\Requests\SeatcheckerRequest;
 use App\Models\SeatChecker;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 class SeatCheckerService extends BaseService implements SeatcheckerContract
 {
+    private static $free = 0;
+
     public function __construct($rimg = null)
     {
         parent::__construct($rimg);
@@ -64,14 +67,24 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
 
     public function addSeatChecker(SeatcheckerRequest $request)
     {
-           $seat = $request->get('seat');
-           $free = $request->get('free');
+       /*    $seat = $request->get('seat');
 
         $seatAdd = SeatChecker::create([
             'seat' => $seat,
-            'free' => $free,
             'created_at' => Carbon::now()->toDateTime()
-        ]);
+        ]);*/
+
+        $seat = $request->get('seat');
+
+        $arrSeat = [];
+        foreach ($seat as $s) {
+            $arr = [
+                'seat' => $s ,
+                'created_at' => Carbon::now()->toDateTime()
+            ];
+            $arrSeat[] = $arr;
+        }
+        $seatAdd = SeatChecker::create($arrSeat);
 
         $seatAdd->save();
     }
@@ -79,13 +92,36 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
     public function modifySeatChecker(SeatcheckerRequest $request, int $id)
     {
         $seat = $request->get('seat');
-        $free = $request->get('free');
+
+        $arrSeat = [];
+        foreach ($seat as $s) {
+            $arr = [
+                'id'  => $id,
+                'seat' => $s ,
+                'updated_at' => Carbon::now()->toDateTime()
+            ];
+            $arrSeat[] = $arr;
+        }
         $seatUp = SeatChecker::findOrFail($id);
-        $seatUp->update([
-            'seat' => $seat,
-            'free' => $free,
-            'updated_at' => Carbon::now()->toDateTime()
-        ]);
+        $seatUp->update($arrSeat);
+    }
+
+    public function modifySeatCheckerFree(Request $request, int $free)
+    {
+
+       /* $request->validate([
+            'seat' => 'required|array',
+            'free' => 'required|number'
+        ]);*/
+        $seata = $request->get('seat');
+       $freeSeat = $request->get('free');
+
+        $seatUp = SeatChecker::query()->whereIn('seat' , $seata)->where('free' , $free);
+        $seatUp->update(['free' => $freeSeat , 'updated_at' => Carbon::now()->toDateTime()]);
+    /*   return [
+             "seat" => $seata,
+              "free" => $freeSeat
+       ];*/
     }
 
     public function deleteSeaChecker(int $id)

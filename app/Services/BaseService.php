@@ -19,9 +19,11 @@ class BaseService
 
         if ($page) {
             $model->offset(($page - 1) * $perPage)->limit($perPage);
+        }else{
+            $model->limit($perPage);
         }
 
-        return array('movies' => $model->get(), 'count' => $model->count());
+        return array('data' => $model->get(), 'count' => $model->count());
     }
 
 

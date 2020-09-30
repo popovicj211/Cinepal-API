@@ -19,7 +19,7 @@ class RolesTableSeeder extends Seeder
                       'name' => $roles[$i]
                 ]);
           }
-        factory(App\Models\Role::class , 2)->create();
+       // factory(App\Models\Role::class , 2)->create();
 
     }
 }

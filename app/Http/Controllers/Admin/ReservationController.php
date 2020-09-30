@@ -6,6 +6,7 @@ use App\Contracts\ReservationContract;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaginateRequest;
+use App\Http\Requests\ReservationAdminRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -57,7 +58,7 @@ class ReservationController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReservationRequest $request)
+    public function store(ReservationAdminRequest $request)
     {
         try {
             $this->service->addReservation($request);

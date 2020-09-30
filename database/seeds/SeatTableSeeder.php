@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\MoviesCategories;
-class MoviesCategoriesTableSeeder extends Seeder
+use App\Models\Seat;
+class SeatTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class MoviesCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-                  factory(MoviesCategories::class , 22)->create();
+        factory(Seat::class , 5)->create();
     }
 }

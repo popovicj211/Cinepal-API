@@ -21,7 +21,7 @@ class ReservationController extends ApiController
     public function addReservation(ReservationRequest $request)
     {
         try {
-            $this->service->addReservation($request);
+            $this->service->addReservationUser($request);
             $this->result['addRes'] = $this->Created('Reservation is successfully added');
         }catch (\Exception $e){
             Log::error("Error, add reservation:" . $e->getMessage());

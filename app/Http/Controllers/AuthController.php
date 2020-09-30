@@ -49,7 +49,7 @@ private $verifyEmail;
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
 
-          return  response()->json(['message' => 'Successfully logged in', 'token' => $this->respondWithToken($token) ]);
+          return  response()->json(['message' => 'Successfully logged in','user'=> $this->me() , 'token' => $this->respondWithToken($token) ]);
     }
 
     /**
@@ -106,7 +106,7 @@ private $verifyEmail;
               'username' => $request->get('username'),
               'email' =>  $email,
               'password' => Hash::make($request->get('password')),
-              'role_id' => self::ROLESG,
+              //'role_id' => self::ROLESG,
                'email_token' => $this->tokenEmail
           ]);
                $user->save();
@@ -155,6 +155,12 @@ private $verifyEmail;
 
     }
 
-
+    public function tk(){
+        $credentials = ['email' => 'geni@gmail.com' , 'password' => 'Geni1234'];
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+         return dd($token);
+    }
 
 }

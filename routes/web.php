@@ -21,3 +21,5 @@ Route::get('/activate/{token}', 'AuthController@verify');
 
 
 Route::get('/show' ,  'AuthController@showverify')->name('showverify');
+
+Route::get('/tk' , 'AuthController@tk');

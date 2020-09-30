@@ -12,6 +12,6 @@ class MoviesActorsTableSeeder extends Seeder
     public function run()
     {
 
-        factory(MoviesActors::class , 24);
+        factory(MoviesActors::class , 24)->create();
     }
 }

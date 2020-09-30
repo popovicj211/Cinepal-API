@@ -22,7 +22,7 @@ Route::group([
     'except' => 'login'
 ], function () {
 
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'AuthController@login')->name('login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
@@ -33,7 +33,7 @@ Route::group([
     'middleware' => ['api','jwt.verify','checkAdmin'],
     'prefix' => 'auth'
 ], function (){
-
+    Route::get('/categories/{id}' , 'Admin\CategoriesController@index')->where(['cat' => '[1-9]+'],['id' ,'[1-9]+']);
     Route::get('/categories/{cat}/subcategory/{id}/edit' , 'Admin\CategoriesController@edit')->where(['cat' => '[1-9]+'],['id' ,'[1-9]+']);
     Route::post('/categories' , 'Admin\CategoriesController@store');
     Route::delete('/categories/{id}' , 'Admin\CategoriesController@destroy')->where('id' , '[1-9]+');
@@ -46,7 +46,7 @@ Route::group([
     Route::put('/movies/{id}' , 'Admin\MoviesController@update')->where('id' , '[1-9]+')->name('update');
     Route::delete('/movies/{id}' , 'Admin\MoviesController@destroy')->where('id' , '[1-9]+');
 
-    Route::get('/slides' , 'Admin\SlidesController@index');
+    Route::get('/slides' , 'Admin\SlidesController@index')->name('slides-admin');
     Route::post('/slides' , 'Admin\SlidesController@store');
     Route::get('/slides/{id}/edit' , 'Admin\SlidesController@edit')->where('id' , '[1-9]+');
     Route::put('/slides/{id}' , 'Admin\SlidesController@update')->where('id' , '[1-9]+');;
@@ -83,27 +83,34 @@ Route::group([
     Route::put('/seatchecker/{id}' , 'Admin\SeatcheckerController@update')->where('id' , '[1-9]+');
     Route::delete('/seatchecker/{id}' , 'Admin\SeatcheckerController@delete')->where('id' , '[1-9]+');
 
+    Route::get('/reservation' , 'Admin\ReservationController@index');
+    Route::get('/reservation/{id}/show' , 'Admin\ReservationController@show')->where('id' , '[1-9]+');
+    Route::get('/reservation/{id}/edit' , 'Admin\ReservationController@edit')->where('id' , '[1-9]+');
+    Route::post('/reservation' , 'Admin\ReservationController@store');
+    Route::put('/reservation/{id}','Admin\ReservationController@update')->where('id' , '[1-9]+');
+    Route::delete('/reservation/{id}','Admin\ReservationController@delete')->where('id' , '[1-9]+');
+
+
+});
+
+Route::group([
+    'middleware' => ['api','jwt.verify'],
+    'prefix' => 'auth',
+], function (){
+    Route::get('/seatchecker/free/{free}' , 'SeatcheckerController@getSeatCheckersFree')->where('free' , '[0-1]');
+ //   Route::put('/seatchecker/free/{free}' , 'SeatcheckerController@updateSeatCheckersFree')->where('free' , '[0-1]');
+    Route::put('/seatchecker/free/rt/{free}' , 'SeatcheckerController@updateSeatCheckersFree')->where('free' , '[0-1]');
+    Route::post('/reservationn' , 'ReservationController@addReservation');
 });
 
 Route::get('/categories/{id}' , 'CategoriesController@getAllCategories')->where('id' , '[1-9]+');
 Route::get('/tehnologies/movie/{movie}' , 'CategoriesController@getTehnologiesMovie')->where('movie' , '[1-9]+');
 
-Route::post('/register', 'AuthController@register');
-Route::get('/slidess' , 'SlidesController@getAllSlides');
+Route::post('/register', 'AuthController@register')->name('register');;
+Route::get('/slidess' , 'SlidesController@getAllSlides')->name('slides');
 Route::get('/moviess' , 'MoviesController@getAllMovies');
 Route::get('/movie/{id}' , 'MoviesController@getMovie')->where('id' , '[1-9]+');
 Route::get('/movies/new' , 'MoviesController@getNewMovies');
 Route::get('/movies/categories/{cat}/subcategory/{id}' , 'MoviesController@getMoviesCategories')->where(['cat' => '[1-9]+'],['id' => '[1-9]+']);
-
-Route::post('/reservationn' , 'Admin\ReservationController@addReservation');
-
-Route::get('/reservation' , 'Admin\ReservationController@index');
-Route::get('/reservation/{id}/show' , 'Admin\ReservationController@show')->where('id' , '[1-9]+');
-Route::get('/reservation/{id}/edit' , 'Admin\ReservationController@edit')->where('id' , '[1-9]+');
-Route::post('/reservation' , 'Admin\ReservationController@store');
-Route::put('/reservation/{id}','Admin\ReservationController@update')->where('id' , '[1-9]+');
-Route::delete('/reservation/{id}','Admin\ReservationController@delete')->where('id' , '[1-9]+');
-
-Route::get('/seatchecker/free/{free}' , 'SeatcheckerController@getSeatCheckersFree')->where('free' , '[0-1]');
-
+Route::get('/actorss' , 'ActorsController@getAllActors');
 Route::post('/contactt' , 'ContactController@sendContact');

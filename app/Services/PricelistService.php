@@ -50,6 +50,8 @@ class PricelistService extends BaseService implements PricelistContract
              }
          }
 
+
+
          public function addPrice(PricelistRequest $request)
          {
              $movie = $request->get('movieId');

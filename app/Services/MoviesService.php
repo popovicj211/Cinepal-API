@@ -36,9 +36,10 @@ class MoviesService extends BaseService implements MoviesContract
         $perPage = $request->get('perPage');
         $movies = Movies::with( ['img' , 'year' , 'actors' , 'pricelist'] );
         $moviesPag  = $this->generatePagedResponse($movies, $perPage , $page );
+        $catCount = DB::table('movies')->count();
         $moviesArr = [];
      //  $moviesArr[] = $moviesPag;
-       foreach ($moviesPag['movies'] as $movie)
+       foreach ($moviesPag['data'] as $movie)
         {
             $moviesDTO = new MoviesDTO();
         //1588291200
@@ -65,7 +66,8 @@ class MoviesService extends BaseService implements MoviesContract
             $moviesArr[] = $moviesDTO;
         }
 
-        return array('movies' =>  $moviesArr , 'count' => $moviesPag['count']);
+    //    return array('movies' =>  $moviesArr , 'count' => $moviesPag['count']);
+        return array('data' =>  $moviesArr , 'count' => $catCount);
     }
 
     public function getNewMovies(): array
@@ -119,7 +121,7 @@ class MoviesService extends BaseService implements MoviesContract
          $catCount = DB::table('movies as m')->select('m.*' , 'c.subcategory_id')->join('movies_categories as mc' , 'm.id' , '=' , 'mc.movie_id')->join('categories as c' , 'mc.category_id' , '=' , 'c.id')->where('c.id','=' , $id)->count();
         $moviesCatArr = [];
 
-            foreach ($moviesCatPag['movies'] as $movie) {
+            foreach ($moviesCatPag['data'] as $movie) {
                 $moviesDTO = new MoviesDTO();
 
                 $moviesDTO->id = $movie->id;
@@ -141,7 +143,7 @@ class MoviesService extends BaseService implements MoviesContract
                       $moviesCatArr[] = $moviesDTO;
                   }
             }
-        return array('movies' =>  $moviesCatArr , 'count' => $catCount);
+        return array('data' =>  $moviesCatArr , 'count' => $catCount);
     }
 
 

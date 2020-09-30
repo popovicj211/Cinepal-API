@@ -12,6 +12,12 @@ class ImagesTableSeeder extends Seeder
     public function run()
     {
         $images = [
+              [
+                'link' => 'slider.jpg'
+              ],
+              [
+                'link' => 'slider2.jpg'
+              ],
                [
                  'link' => 'badboysforlife.jpg'
                ],
@@ -33,7 +39,7 @@ class ImagesTableSeeder extends Seeder
         ];
 
          foreach ($images as $image){
-                 Images::create($image)->unique();
+                 Images::create($image);
          }
 
     }
