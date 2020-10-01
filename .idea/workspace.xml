@@ -2,43 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f083262-e007-485e-9a18-058569f19724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/back-end.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/back-end.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/ActorsContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/ActorsContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/ReservationContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/ReservationContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/SeatcheckerContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/SeatcheckerContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PricelistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PricelistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeatcheckerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeatcheckerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SeatcheckerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SeatcheckerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/PHPMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/PHPMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Seat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Seat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ActorsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ActorsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/BaseService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/BaseService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/MoviesService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/MoviesService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PricelistService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PricelistService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Contracts/RoleContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/RoleContract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RoleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/ReservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ReservationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/RoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/RoleService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/SeatCheckerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SeatCheckerService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/MoviesFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MoviesFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/Movies_ActorsFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/Movies_ActorsFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/Movies_CategoriesFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/Movies_CategoriesFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/CategoriesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/CategoriesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ImagesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ImagesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/MoviesActorsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MoviesActorsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/MoviesCategoriesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MoviesCategoriesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AuthTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AuthTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SlidesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SlidesTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +170,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
-  <component name="RunManager" selected="PHPUnit.SlidesTest.testGetSlidesAdmin">
+  <component name="RunManager" selected="PHPUnit.RoleTest.addRoleTest">
     <configuration name="AuthTest.it_will_register_a_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <CommandLine>
         <PhpTestInterpreterSettings>
@@ -206,20 +180,20 @@
       <TestRunner class="Tests\Feature\AuthTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AuthTest.php" method="it_will_register_a_user" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="AuthTest.setUp" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AuthTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AuthTest.php" method="setUp" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AuthTest.testLogin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AuthTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AuthTest.php" method="testLogin" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AuthTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AuthTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AuthTest.php" method="testRegister" scope="Method" />
+    <configuration name="RoleTest.addRoleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="addRoleTest" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="SlidesTest.testGetSlidesAdmin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\SlidesTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/SlidesTest.php" method="testGetSlidesAdmin" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.addUserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="addUserTest" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -234,18 +208,18 @@
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
       <item itemvalue="PHPUnit.SlidesTest.testGetSlidesAdmin" />
-      <item itemvalue="PHPUnit.AuthTest.testLogin" />
-      <item itemvalue="PHPUnit.AuthTest.testRegister" />
-      <item itemvalue="PHPUnit.AuthTest.setUp" />
       <item itemvalue="PHPUnit.AuthTest.it_will_register_a_user" />
+      <item itemvalue="PHPUnit.UserTest" />
+      <item itemvalue="PHPUnit.UserTest.addUserTest" />
+      <item itemvalue="PHPUnit.RoleTest.addRoleTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.RoleTest.addRoleTest" />
+        <item itemvalue="PHPUnit.UserTest.addUserTest" />
+        <item itemvalue="PHPUnit.UserTest" />
         <item itemvalue="PHPUnit.SlidesTest.testGetSlidesAdmin" />
         <item itemvalue="PHPUnit.AuthTest.it_will_register_a_user" />
-        <item itemvalue="PHPUnit.AuthTest.setUp" />
-        <item itemvalue="PHPUnit.AuthTest.testRegister" />
-        <item itemvalue="PHPUnit.AuthTest.testLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -300,6 +274,9 @@
       <workItem from="1601302618453" duration="28226000" />
       <workItem from="1601376448660" duration="512000" />
       <workItem from="1601404727724" duration="7656000" />
+      <workItem from="1601468895900" duration="25630000" />
+      <workItem from="1601515865986" duration="108000" />
+      <workItem from="1601550106671" duration="2684000" />
     </task>
     <servers />
   </component>
@@ -323,30 +300,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="115" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601413044301" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601059491156">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601503204256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601059491156" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601503204256" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1601245008530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601245008530" />
-    <state width="1062" height="346" key="GridCell.Tab.0.bottom" timestamp="1601424257236">
+    <state width="1168" height="339" key="GridCell.Tab.0.bottom" timestamp="1601552969637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state width="1062" height="346" key="GridCell.Tab.0.center" timestamp="1601424257236">
+    <state width="1168" height="339" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
+    <state width="1168" height="339" key="GridCell.Tab.0.center" timestamp="1601552969637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state width="1062" height="346" key="GridCell.Tab.0.left" timestamp="1601424257235">
+    <state width="1168" height="339" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
+    <state width="1168" height="339" key="GridCell.Tab.0.left" timestamp="1601552969637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257235" />
-    <state width="1062" height="346" key="GridCell.Tab.0.right" timestamp="1601424257236">
+    <state width="1168" height="339" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
+    <state width="1168" height="339" key="GridCell.Tab.0.right" timestamp="1601552969637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
+    <state width="1168" height="339" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
     <state width="1062" height="346" key="GridCell.Tab.1.bottom" timestamp="1601424257236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -363,10 +340,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1062" height="346" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state x="738" y="362" key="NewPhpClassDialog" timestamp="1601211855208">
+    <state x="738" y="362" key="NewPhpClassDialog" timestamp="1601501608836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="738" y="362" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601211855208" />
+    <state x="738" y="362" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601501608836" />
     <state x="136" y="161" key="SettingsEditor" timestamp="1601413221835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -375,20 +352,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="89" width="1732" height="951" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601412734625" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/tests/Feature/SlidesTest.php</url>
-          <line>89</line>
-          <properties>
-            <option name="className" value="\Tests\Feature\SlidesTest" />
-            <option name="methodName" value="apiAs" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

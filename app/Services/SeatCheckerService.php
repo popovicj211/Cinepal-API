@@ -19,6 +19,7 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
     public function __construct($rimg = null)
     {
         parent::__construct($rimg);
+        $this->rimg = $rimg;
     }
 
     public function getSeatCheckers(PaginateRequest $request): array

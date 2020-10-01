@@ -46,11 +46,11 @@ Route::group([
     Route::put('/movies/{id}' , 'Admin\MoviesController@update')->where('id' , '[1-9]+')->name('update');
     Route::delete('/movies/{id}' , 'Admin\MoviesController@destroy')->where('id' , '[1-9]+');
 
-    Route::get('/slides' , 'Admin\SlidesController@index')->name('slides-admin');
-    Route::post('/slides' , 'Admin\SlidesController@store');
+    Route::get('/slides' , 'Admin\SlidesController@index')->name('admin.slides-get');
+    Route::post('/slides' , 'Admin\SlidesController@store')->name('admin.slides-post');
     Route::get('/slides/{id}/edit' , 'Admin\SlidesController@edit')->where('id' , '[1-9]+');
     Route::put('/slides/{id}' , 'Admin\SlidesController@update')->where('id' , '[1-9]+');;
-    Route::delete('/slides/{id}' , 'Admin\SlidesController@destroy')->where('id' , '[1-9]+');;
+    Route::delete('/slides/{id}' , 'Admin\SlidesController@destroy')->where('id' , '[1-9]+');
 
     Route::get('/price' , 'Admin\PricelistController@index');
     Route::get('/price/{id}/show' , 'Admin\PricelistController@show')->where('id' , '[1-9]+');
@@ -65,6 +65,12 @@ Route::group([
     Route::put('/contact/{id}' , 'Admin\ContactController@update')->where('id' , '[1-9]+');
     Route::delete('/contact/{id}' , 'Admin\ContactController@destroy')->where('id' , '[1-9]+');
 
+    Route::get('/roles' , 'Admin\RoleController@index')->name('admin.roles-get');;
+
+    Route::get('/roles/{id}/edit' , 'Admin\RoleController@edit')->where('id' , '[1-9]+');
+    Route::put('/roles/{id}' , 'Admin\RoleController@update')->where('id' , '[1-9]+');
+    Route::delete('/roles/{id}' , 'Admin\RoleController@destroy')->where('id' , '[1-9]+');
+
     Route::get('/actors' , 'Admin\ActorsController@index');
     Route::get('/actors/{id}/edit' , 'Admin\ActorsController@edit')->where('id' , '[1-9]+');
     Route::post('/actors' , 'Admin\ActorsController@store');
@@ -73,7 +79,7 @@ Route::group([
 
     Route::get('/users' , 'Admin\UserController@index');
     Route::get('/users/{id}/edit' , 'Admin\UserController@edit')->where('id' , '[1-9]+');
-    Route::post('/users' , 'Admin\UserController@store');
+    Route::post('/users' , 'Admin\UserController@store')->name('admin.users-post');
     Route::put('/users/{id}' , 'Admin\UserController@update')->where('id' , '[1-9]+');
     Route::delete('/users/{id}' , 'Admin\UserController@destroy')->where('id' , '[1-9]+');
 
@@ -114,3 +120,5 @@ Route::get('/movies/new' , 'MoviesController@getNewMovies');
 Route::get('/movies/categories/{cat}/subcategory/{id}' , 'MoviesController@getMoviesCategories')->where(['cat' => '[1-9]+'],['id' => '[1-9]+']);
 Route::get('/actorss' , 'ActorsController@getAllActors');
 Route::post('/contactt' , 'ContactController@sendContact');
+
+Route::post('/roles' , 'Admin\RoleController@store')->name('admin.roles-post');

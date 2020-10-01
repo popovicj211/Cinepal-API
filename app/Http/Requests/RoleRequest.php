@@ -27,4 +27,12 @@ class RoleRequest extends FormRequest
             'name' => 'required|min:3'
         ];
     }
+
+    public function messages()
+    {
+        return [
+        'name.required' => 'Name is required!',
+            'name.min' => 'Name is must have minimal 3 characters!'
+           ];
+    }
 }

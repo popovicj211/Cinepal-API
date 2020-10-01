@@ -22,6 +22,7 @@ class ReservationService extends BaseService implements ReservationContract
     public function __construct($rimg = null)
     {
         parent::__construct($rimg);
+        $this->rimg = $rimg;
     }
 
     public function getReservations(PaginateRequest $request): array

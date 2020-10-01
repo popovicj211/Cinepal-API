@@ -60,31 +60,57 @@ class AuthTest extends TestCase
 
     public function it_will_register_a_user(){
         try {
-            $response = $this->post(route('register'), [
+          /*  $response = $this->post(route('register'), [
                 'name' => 'Test Test',
                 'username' => 'test2',
                 'email' => 'testr@gmail.com',
                 'password' => 'Test21234'
-            ]);
+            ]);*/
 
-            $credentials = ['email' => 'geni@gmail.com' , 'password' => 'Geni1234'];
+           $user = [
+               'name' => 'Test Test',
+               'username' => 'test2',
+               'email' => 'testr@gmail.com',
+               'password' => 'Test21234'
+           ];
+
+            $credentials = ['email' => 'testr@gmail.com' , 'password' => 'Test21234'];
             $token = auth()->attempt($credentials);
 
-            $response->assertJsonStructure([
-                'access_token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60
-            ]);
+            $response = $this->withHeaders([
+                'Authorization' => 'Bearer '.$token
+            ])->json('GET',route('slides-admin'));
+
+           /* $credentials = ['email' => 'testr@gmail.com' , 'password' => 'Test21234'];
+            $token = auth()->attempt($credentials);*/
+            $response->assertStatus(200);
+
+
+         /*   $response->assertJsonStructure(['data'=>[
+                'access_token',
+                'token_type' ,
+                'expires_in'
+            ]]);*/
         }catch (QueryException $e){
             Log::error("Error, testing register:" . $e->getMessage());
         }
 
     }
-/*
-    /**
-     * @test
-     * Test login
-     */
+
+
+    public function testPositiveTestcaseForArrayHasKey()
+    {
+        // array to be tested
+        $array  = array('geeks' => 'geeksForgeeks', );
+        // assert function to test whether 'geeks' is a key of array
+        $this->assertArrayHasKey('geeks', $array, "Array doesn't contains 'geeks' as key");
+    }
+
+    /*
+        /**
+         * @test
+         * Test login
+         */
 
    /* public function testLogin()
     {
