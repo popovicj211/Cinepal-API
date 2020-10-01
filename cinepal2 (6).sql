@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2020 at 06:53 PM
+-- Generation Time: Sep 27, 2020 at 04:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -287,9 +287,9 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `name`, `description`, `release_date`, `running_time`, `year_id`, `img_id`, `created_at`, `updated_at`) VALUES
-(2, 'Bad boys for life', 'Bad boys Mike Laurie (Will Smith) and Marcus Barnett (Martin Lawrence) are together again in another crazy ride, in the long-awaited below, \"Bad guys forever\". This time our bad boys are a little older, but they are equally crazy and wicked. Although Marcus announced the recent retirement of his longtime partner Mike (he thinks it was time), Mike persuaded him to go on another crazy mission.', '2020-06-10 11:30:00', 135, 2, 3, '2020-04-23 12:47:12', NULL),
-(3, 'Top gun', 'The elusive Captain Maverick takes us to the heights again, and in the ride he will leave us breathless and boost the adrenaline! In one of the most anticipated sequels ever, Tom Cruise is joined by Val Kilmer and Ed Harris, who reprized the roles from the first part, and are now with them', '2020-06-18 15:00:00', 123, 1, 8, '2020-04-24 16:38:40', NULL),
-(4, 'Black widow', 'Scarlett Johansson reprises the role of Natasha / Black Widow in the Marvel action spectacle, the spy thriller \"BLACK WIDOW\" - the first film of the fourth stage of the Marvel movie universe. Florence Pew plays Jelena in the film, David Harbor is Alexei, better known as the Red Guard, and Rachel Weiss is Melina. The director of the film is Kate Shortland and the producer is Kevin Feigy.', '2020-06-19 15:00:00', 109, 2, 4, '2020-04-23 12:47:12', NULL),
+(2, 'Bad boys for life', 'Bad boys Mike Laurie (Will Smith) and Marcus Barnett (Martin Lawrence) are together again in another crazy ride, in the long-awaited below, \"Bad guys forever\". This time our bad boys are a little older, but they are equally crazy and wicked. Although Marcus announced the recent retirement of his longtime partner Mike (he thinks it was time), Mike persuaded him to go on another crazy mission.', '2020-10-29 11:30:00', 135, 2, 3, '2020-04-23 12:47:12', NULL),
+(3, 'Top gun', 'The elusive Captain Maverick takes us to the heights again, and in the ride he will leave us breathless and boost the adrenaline! In one of the most anticipated sequels ever, Tom Cruise is joined by Val Kilmer and Ed Harris, who reprized the roles from the first part, and are now with them', '2020-11-03 15:00:00', 123, 1, 8, '2020-04-25 02:09:12', NULL),
+(4, 'Black widow', 'Scarlett Johansson reprises the role of Natasha / Black Widow in the Marvel action spectacle, the spy thriller \"BLACK WIDOW\" - the first film of the fourth stage of the Marvel movie universe. Florence Pew plays Jelena in the film, David Harbor is Alexei, better known as the Red Guard, and Rachel Weiss is Melina. The director of the film is Kate Shortland and the producer is Kevin Feigy.', '2020-11-06 15:00:00', 109, 2, 4, '2020-04-25 06:13:11', NULL),
 (5, 'Lighthouse', 'Two lighthouse keepers try to maintain common sense by living on a remote and mysterious island of New England before the end of the 19th century.', '2020-10-05 15:00:00', 125, 1, 5, '2020-04-25 02:09:12', NULL),
 (6, 'The new mutants', '20th Century Studio in collaboration with Marvel Entertainment presents the film New Mutants, an original horror thriller set in an isolated hospital, where a group of young mutants are under psychiatric surveillance. When strange things start happening, both their mutant abilities and their friendship will be put to the test as they fight for their lives.', '2020-10-08 18:30:00', 105, 3, 6, '2020-04-25 06:13:11', NULL),
 (7, 'Wasp network', 'In the late 1980s and early 1990s, Cuban groups from Florida, made up of opponents of Fidel Castro\'s regime, carried out fierce attacks in Cuba, dropping bombs on hotels and killing innocent people on the beach. In retaliation, the Cuban government inserts an elite group of spies into these terrorist groups in order to break them from within. Five of them eventually fall into the hands of the American authorities and face life imprisonment on charges of murder and espionage', '2020-10-15 16:00:00', 120, 2, 7, '2020-04-25 06:13:11', NULL);
@@ -495,6 +495,19 @@ CREATE TABLE `reservation` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `user_id`, `movie_id`, `qtypersons`, `totalprice`, `datefrom`, `dateto`, `created_at`, `updated_at`) VALUES
+(3, 1, 4, 2, '9.00', '2020-08-16 00:20:07', '2020-06-19 15:00:00', '2020-08-15 22:20:07', '2020-08-15 22:20:07'),
+(4, 1, 3, 2, '8.40', '2020-08-16 16:26:56', '2020-11-03 15:00:00', '2020-08-16 14:26:56', '2020-08-16 14:26:56'),
+(5, 1, 4, 2, '9.00', '2020-08-16 17:15:49', '2020-11-06 15:00:00', '2020-08-16 15:15:49', '2020-08-16 15:15:49'),
+(6, 2, 3, 1, '4.20', '2020-09-25 14:21:10', '2020-11-03 15:00:00', '2020-09-25 12:21:11', '2020-09-25 12:21:11'),
+(7, 2, 3, 1, '4.20', '2020-09-25 14:32:08', '2020-11-03 15:00:00', '2020-09-25 12:32:08', '2020-09-25 12:32:08'),
+(8, 2, 3, 1, '4.20', '2020-09-25 14:57:38', '2020-11-03 15:00:00', '2020-09-25 12:57:38', '2020-09-25 12:57:38'),
+(9, 2, 5, 1, '3.30', '2020-09-25 15:02:49', '2020-10-05 15:00:00', '2020-09-25 13:02:49', '2020-09-25 13:02:49');
+
 -- --------------------------------------------------------
 
 --
@@ -514,13 +527,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', '2020-04-23 12:47:12', NULL),
-(2, 'User', '2020-04-25 02:09:12', NULL),
-(3, 'Admin', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(4, 'User', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(5, 'Admin', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(6, 'User', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(7, 'Admin', '2020-05-17 14:51:08', '2020-05-17 14:51:08'),
-(8, 'User', '2020-05-17 14:51:08', '2020-05-17 14:51:08');
+(2, 'User', '2020-04-25 02:09:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -535,6 +542,19 @@ CREATE TABLE `seat` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seat`
+--
+
+INSERT INTO `seat` (`id`, `number`, `re_id`, `created_at`, `updated_at`) VALUES
+(5, 3, 4, '2020-08-16 14:26:56', NULL),
+(6, 4, 4, '2020-08-16 14:26:56', NULL),
+(7, 5, 5, '2020-08-16 15:15:49', NULL),
+(10, 13, 7, '2020-09-25 12:32:08', NULL),
+(11, 14, 7, '2020-09-25 12:32:08', NULL),
+(14, 9, 9, '2020-09-25 13:02:49', NULL),
+(15, 10, 9, '2020-09-25 13:02:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -555,20 +575,20 @@ CREATE TABLE `seatchecker` (
 --
 
 INSERT INTO `seatchecker` (`id`, `seat`, `free`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2020-06-08 19:27:53', '2020-06-08 20:02:15'),
-(2, 2, 1, '2020-06-08 19:53:56', '2020-06-08 19:53:56'),
-(3, 3, 1, '2020-06-08 19:54:04', '2020-06-08 19:54:04'),
-(5, 4, 1, '2020-06-08 19:54:30', '2020-06-08 20:03:20'),
-(6, 5, 1, '2020-06-08 19:56:25', '2020-06-08 20:03:32'),
-(7, 6, 1, '2020-06-08 19:56:31', '2020-06-08 19:56:31'),
-(8, 7, 1, '2020-06-08 19:56:35', '2020-06-08 19:56:35'),
-(9, 8, 1, '2020-06-08 19:56:38', '2020-06-08 19:56:38'),
-(10, 9, 1, '2020-06-08 19:56:41', '2020-06-08 19:56:41'),
-(11, 10, 1, '2020-06-08 19:56:44', '2020-06-08 19:56:44'),
-(12, 11, 1, '2020-06-08 19:56:51', '2020-06-08 19:56:51'),
-(13, 12, 1, '2020-06-08 19:56:55', '2020-06-08 19:56:55'),
-(14, 13, 1, '2020-06-08 19:56:58', '2020-06-08 19:56:58'),
-(15, 14, 1, '2020-06-08 19:57:02', '2020-06-08 19:57:02');
+(1, 1, 0, '2020-06-08 19:27:53', '2020-07-31 21:03:00'),
+(2, 2, 0, '2020-06-08 19:53:56', '2020-07-31 21:03:00'),
+(3, 3, 0, '2020-06-08 19:54:04', '2020-07-31 20:12:32'),
+(5, 4, 0, '2020-06-08 19:54:30', '2020-07-31 20:12:32'),
+(6, 5, 1, '2020-06-08 19:56:25', '2020-07-31 20:12:32'),
+(7, 6, 1, '2020-06-08 19:56:31', '2020-07-31 20:12:32'),
+(8, 7, 1, '2020-06-08 19:56:35', '2020-07-31 20:12:32'),
+(9, 8, 1, '2020-06-08 19:56:38', '2020-07-31 20:12:32'),
+(10, 9, 0, '2020-06-08 19:56:41', '2020-09-25 13:02:50'),
+(11, 10, 0, '2020-06-08 19:56:44', '2020-09-25 13:02:50'),
+(12, 11, 1, '2020-06-08 19:56:51', '2020-07-31 20:12:32'),
+(13, 12, 1, '2020-06-08 19:56:55', '2020-07-31 20:12:32'),
+(14, 13, 0, '2020-06-08 19:56:58', '2020-09-25 12:57:38'),
+(15, 14, 0, '2020-06-08 19:57:02', '2020-09-25 12:57:38');
 
 -- --------------------------------------------------------
 
@@ -637,26 +657,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 (24, 'Moralna Pobedabaa', 'moralnabacaa', 'moralnapobedabacaa71@gmail.com', '2020-05-15 22:16:45', '$2y$10$oPL5lPqFVDum3WRr2hnele9KM.37BiaKTxIvzTVjfkuN0C3jGCVAG', 2, '453367593cc51d95e1d3acb6343f028a', NULL, '2020-05-15 22:16:28', '2020-05-15 22:16:45'),
 (25, 'Jamar Schuppe', 'precious.beahan', 'vicente.tillman@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'b96a87f416bc9cfc56ffea11bebc89b4', '6F0m7ppCmH', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
 (26, 'Ronaldo Kertzmann', 'lilian74', 'twaters@example.com', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, '5c09abe1aa05639b02af16fc02422d2d', 'Q9MuCPPZfE', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
-(27, 'Oda Halvorson IV', 'jedediah65', 'maggio.corbin@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'f521e62ef54f84f2c19841252dc43e5b', 'gBTnzKrqjf', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
-(28, 'Mateo Pouros', 'wcruickshank', 'metz.annamae@example.com', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, '1ef636aab7d44e28e07b27635881078d', 'mpdoXjS1xc', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
-(29, 'Nicolas Ferry', 'heidenreich.bella', 'theresia52@example.com', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, '54def1765e5e9b9b12b48b4c97882cc5', 'daWwBxwjbS', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
-(30, 'Kaela Hermann', 'jakubowski.jessika', 'sylvia94@example.net', '2020-05-17 14:38:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'd9efb8e6f0f59250821608899732d78a', 'sgcDSBhTOQ', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(31, 'Orlo Dietrich', 'sasha06', 'pablo.lesch@example.org', '2020-05-17 14:38:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'e264a47fa10bbc37278164a49fdf5af5', 'awnDuwHeqP', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(32, 'Mr. Leonel Sipes III', 'carroll.krista', 'witting.grayce@example.com', '2020-05-17 14:38:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'd492501dfe2fac7b8255a824f5b0f7ca', '67j1q9849E', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(33, 'Abel Luettgen', 'schuster.lempi', 'federico94@example.net', '2020-05-17 14:38:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'c6ca9bdf9b485167761355cfdaed55c7', 'F2mbucJlQa', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(34, 'Ms. Mina Mertz DDS', 'santos.rolfson', 'chance45@example.com', '2020-05-17 14:38:42', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4, '1716d74dbb0327f0f36c63e46b51bd08', 'JDMET60oHs', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(35, 'Abagail Gorczany', 'fondricka', 'sipes.isidro@example.net', '2020-05-17 14:47:14', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, '64055ec09a53c646de065302260dca31', '6igmxYrRVd', '2020-05-17 14:47:14', '2020-05-17 14:47:14'),
-(36, 'Abdullah Heathcote V', 'zthompson', 'ystanton@example.org', '2020-05-17 14:47:14', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 5, '7d3ab5bba09ebf7e176938fd0b6340e9', '0iInI764T4', '2020-05-17 14:47:14', '2020-05-17 14:47:14'),
-(37, 'Rosamond Doyle DDS', 'srosenbaum', 'rosalind.oreilly@example.net', '2020-05-17 14:47:14', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 6, 'bb2bca1815a31311681dd5c9b69140ba', 'ZmbETpinhF', '2020-05-17 14:47:14', '2020-05-17 14:47:14'),
-(38, 'Alisa Schowalter', 'uernser', 'madaline53@example.net', '2020-05-17 14:47:14', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, '272991e536bed10b3a8c9bb0b864b985', 'WegZeD7CMz', '2020-05-17 14:47:14', '2020-05-17 14:47:14'),
-(39, 'Mr. Freeman Goyette DVM', 'thompson.rupert', 'hassie.beier@example.net', '2020-05-17 14:47:14', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 6, '3e408d060b89382c3ea7afe7f72bde49', 'SbHeyljrtH', '2020-05-17 14:47:14', '2020-05-17 14:47:14'),
-(40, 'Hildegard Waters Sr.', 'luisa.block', 'cconnelly@example.net', '2020-05-17 14:51:09', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'c55c3b1163d123067754f9ac8c454138', 'xoCEXRHNGB', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(41, 'Elyssa Yundt', 'corrine47', 'luna98@example.net', '2020-05-17 14:51:09', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 7, 'd424ff3fad94b3eda08a5e2c5a098534', '9wyXc4EhuY', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(42, 'Carter Oberbrunner', 'arden97', 'marvin.itzel@example.net', '2020-05-17 14:51:09', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 7, '22cea4d8123084aace3cd2e12cb15452', 'KDkXzio4B2', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(43, 'Ms. Anabelle Block', 'pearline05', 'oferry@example.com', '2020-05-17 14:51:09', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, '33605e3d13fe2566bf1f055a18d1f551', 'a4mn5rySN7', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(44, 'Kylee Marks', 'qlowe', 'ikuhlman@example.net', '2020-05-17 14:51:09', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4, 'd019a9f49b8d7e24616fc0d2084d69ed', 'SKkiaGFxUN', '2020-05-17 14:51:09', '2020-05-17 14:51:10'),
-(46, 'Nenad Lalatovic', 'lalat', 'lalat@gmail.com', NULL, '$2y$10$kcwJMz8SKgJSP80zfObEse4ecHn4.0Z3H2HauUdKEIkrZc8/dARMW', 2, '398640a9a57f1ef0e7e5a63b8e494710', NULL, '2020-06-24 23:28:06', '2020-06-24 23:28:06'),
-(47, 'Nikola Jovanovic', '@nikola', 'nikola@gmail.com', NULL, '$2y$10$sDQuH9VYAeaq7f//xXHQwOyZaJCMSX9oXfouAAz6mlzG/zFzzPMcG', 2, '38ca4375517b90e1f6c1dcaf263a3cbb', NULL, '2020-06-24 23:34:47', '2020-06-24 23:34:47');
+(27, 'Oda Halvorson IV', 'jedediah65', 'maggio.corbin@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'f521e62ef54f84f2c19841252dc43e5b', 'gBTnzKrqjf', '2020-05-17 14:30:37', '2020-05-17 14:30:37');
 
 -- --------------------------------------------------------
 
@@ -934,7 +935,7 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -946,7 +947,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `seat`
 --
 ALTER TABLE `seat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `seatchecker`
@@ -970,7 +971,7 @@ ALTER TABLE `subscribe`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `years`
