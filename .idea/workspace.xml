@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5f083262-e007-485e-9a18-058569f19724" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/RoleContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/RoleContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RoleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ReservationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ReservationService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/RoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/RoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/SeatCheckerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SeatCheckerService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/AuthTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AuthTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SlidesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SlidesTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/RoleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/RoleTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,26 +164,21 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
-  <component name="RunManager" selected="PHPUnit.RoleTest.addRoleTest">
-    <configuration name="AuthTest.it_will_register_a_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <CommandLine>
-        <PhpTestInterpreterSettings>
-          <option name="interpreterName" value="PHP 7.4" />
-        </PhpTestInterpreterSettings>
-      </CommandLine>
-      <TestRunner class="Tests\Feature\AuthTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AuthTest.php" method="it_will_register_a_user" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.UserTest.addUserTest">
+    <configuration name="RoleTest.addRoleTest_IfUserIsAutentificate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="addRoleTest_IfUserIsAutentificate" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="RoleTest.addRoleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="addRoleTest" scope="Method" />
+    <configuration name="RoleTest.mockingRole" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="mockingRole" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlidesTest.testGetSlidesAdmin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\SlidesTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/SlidesTest.php" method="testGetSlidesAdmin" scope="Method" />
+    <configuration name="RoleTest.testControllerIndex" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="testControllerIndex" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
+    <configuration name="RoleTest.testControllerMovies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="testControllerMovies" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="UserTest.addUserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -207,19 +196,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.SlidesTest.testGetSlidesAdmin" />
-      <item itemvalue="PHPUnit.AuthTest.it_will_register_a_user" />
-      <item itemvalue="PHPUnit.UserTest" />
+      <item itemvalue="PHPUnit.RoleTest.addRoleTest_IfUserIsAutentificate" />
+      <item itemvalue="PHPUnit.RoleTest.mockingRole" />
+      <item itemvalue="PHPUnit.RoleTest.testControllerIndex" />
+      <item itemvalue="PHPUnit.RoleTest.testControllerMovies" />
       <item itemvalue="PHPUnit.UserTest.addUserTest" />
-      <item itemvalue="PHPUnit.RoleTest.addRoleTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.RoleTest.addRoleTest" />
         <item itemvalue="PHPUnit.UserTest.addUserTest" />
-        <item itemvalue="PHPUnit.UserTest" />
-        <item itemvalue="PHPUnit.SlidesTest.testGetSlidesAdmin" />
-        <item itemvalue="PHPUnit.AuthTest.it_will_register_a_user" />
+        <item itemvalue="PHPUnit.RoleTest.addRoleTest_IfUserIsAutentificate" />
+        <item itemvalue="PHPUnit.RoleTest.testControllerMovies" />
+        <item itemvalue="PHPUnit.RoleTest.testControllerIndex" />
+        <item itemvalue="PHPUnit.RoleTest.mockingRole" />
       </list>
     </recent_temporary>
   </component>
@@ -277,6 +266,8 @@
       <workItem from="1601468895900" duration="25630000" />
       <workItem from="1601515865986" duration="108000" />
       <workItem from="1601550106671" duration="2684000" />
+      <workItem from="1601553806636" duration="878000" />
+      <workItem from="1601573267207" duration="17777000" />
     </task>
     <servers />
   </component>
@@ -300,46 +291,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="115" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601413044301" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601503204256">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601588397970">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601503204256" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601588397970" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1601245008530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601245008530" />
-    <state width="1168" height="339" key="GridCell.Tab.0.bottom" timestamp="1601552969637">
+    <state width="1379" height="338" key="GridCell.Tab.0.bottom" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1168" height="339" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
-    <state width="1168" height="339" key="GridCell.Tab.0.center" timestamp="1601552969637">
+    <state width="1379" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.0.center" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1168" height="339" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
-    <state width="1168" height="339" key="GridCell.Tab.0.left" timestamp="1601552969637">
+    <state width="1379" height="338" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.0.left" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1168" height="339" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
-    <state width="1168" height="339" key="GridCell.Tab.0.right" timestamp="1601552969637">
+    <state width="1379" height="338" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.0.right" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1168" height="339" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601552969637" />
-    <state width="1062" height="346" key="GridCell.Tab.1.bottom" timestamp="1601424257236">
+    <state width="1379" height="338" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.1.bottom" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state width="1062" height="346" key="GridCell.Tab.1.center" timestamp="1601424257236">
+    <state width="1379" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.1.center" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state width="1062" height="346" key="GridCell.Tab.1.left" timestamp="1601424257236">
+    <state width="1379" height="338" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.1.left" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
-    <state width="1062" height="346" key="GridCell.Tab.1.right" timestamp="1601424257236">
+    <state width="1379" height="338" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
+    <state width="1379" height="338" key="GridCell.Tab.1.right" timestamp="1601600428580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1062" height="346" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601424257236" />
+    <state width="1379" height="338" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601600428580" />
     <state x="738" y="362" key="NewPhpClassDialog" timestamp="1601501608836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -352,5 +343,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="89" width="1732" height="951" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601412734625" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/tests/Feature/RoleTest.php</url>
+          <line>112</line>
+          <properties>
+            <option name="className" value="\Tests\Feature\RoleTest" />
+            <option name="methodName" value="getRoleEditTest_IfUserIsNotAutentificated" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/tests/Feature/RoleTest.php</url>
+          <line>79</line>
+          <properties>
+            <option name="className" value="\Tests\Feature\RoleTest" />
+            <option name="methodName" value="getRolesTest_IfUserIsAutentificate" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

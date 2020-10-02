@@ -23,14 +23,10 @@ class UserTest extends TestCase
      */
     protected function authenticate(){
 
+
+        factory( Role::class )->create();
         $roleID = Role::all()->random()->id;
 
-
-        $role = Role::create([
-            'name' => 'TestUser',
-            'created_at' => Carbon::now()->toDateTime()
-        ]);
-        $role->save();
         $user = User::create([
             'name' => 'Test Test',
             'username' => 'test2',
@@ -42,7 +38,8 @@ class UserTest extends TestCase
             'created_at' => Carbon::now()
         ]);
         $this->user = $user;
-        $token = JWTAuth::fromUser($user);
+       // $token = JWTAuth::fromUser($user);
+         $token = auth()->login($user);
         return $token;
     }
 
@@ -54,10 +51,9 @@ class UserTest extends TestCase
     public function addUserTest(){
         //Get token
         $token = $this->authenticate();
-             $this->withoutExceptionHandling();
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '.$token,
-        ])->json('POST',route('admin.users-post'),[
+        ])->json('POST',route('admin.addUser'),[
             'name' => 'Test Test',
             'username' => 'test2',
              'email' => 'test2@gmail.com',
@@ -66,10 +62,12 @@ class UserTest extends TestCase
               'email_token' => md5(time().'test2@gmail.com'.rand(1,10000)),
               'created_at' => Carbon::now()
         ]);
-        $response->assertStatus(200);
-        //Get count and assert
-        $count = $this->user->users()->count();
-        $this->assertEquals(1,$count);
+        $response->assertStatus(201);
+        $this->assertArrayHasKey(
+              'data' , [
+                  'message' , 'token'
+            ]
+        );
     }
 
 }
