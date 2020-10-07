@@ -193,7 +193,8 @@ class MoviesService extends BaseService implements MoviesContract
         $actors = $request->get('actors');
         $price = $request->get('price');
 
-              $images  = Images::create([
+ // var_dump($name.",".$desc.",".$rel.",".$runtime.",".$year.",".$categories.",".$linkImg.",".$actors);
+             $images  = Images::create([
                       'link' => $linkImg,
                 ]);
            $images->save();
@@ -201,7 +202,7 @@ class MoviesService extends BaseService implements MoviesContract
             $movies = Movies::create([
                           'name' => $name,
                         'description' => $desc,
-                       'release_date' => Carbon::parse($rel)->toDateTime(),
+                       'release_date' => $rel,
                       'running_time' => $runtime,
                         'year_id' =>  $year,
                        'img_id' => DB::getPdo()->lastInsertId()

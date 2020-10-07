@@ -8,7 +8,7 @@ use App\Models\Reservation;
 use App\Models\SeatChecker;
 $factory->define(Seat::class, function (Faker $faker) {
     return [
-          'number' => SeatChecker::all()->where('free' , '=',0)->unique()->random()->seat,
+          'number' => SeatChecker::all()->where('free' , '=',0)->random()->seat,
            're_id' => Reservation::all()->random()->id ,
             'created_at' => now()
     ];

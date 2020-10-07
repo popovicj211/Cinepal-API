@@ -33,7 +33,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function reservation(){
-           return $this->hasOne(Reservation::class);
+           return $this->hasMany(Reservation::class, 'user_id' , 'id');
     }
 
     public function getJWTIdentifier()

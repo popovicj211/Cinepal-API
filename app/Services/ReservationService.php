@@ -29,38 +29,39 @@ class ReservationService extends BaseService implements ReservationContract
     {
         $page = $request->get('page');
         $perPage = $request->get('perPage');
-        $reservation = Reservation::with( ['users','movies']);
-        $resPag  = $this->generatePagedResponse($reservation, $perPage , $page);
+       $reservation = Reservation::query()->leftJoin('seat as s' , 'reservation.id' , '=' , 's.id')->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' , 's.number','u.email' , 'm.name')->get();
+
         $catCount = DB::table('reservation')->count();
         $resArr = [];
-          foreach($resPag['data'] as $res){
+          foreach($reservation as $res){
                $resDTO = new ReservationDTO();
                $resDTO->id = $res->id;
-               $resDTO->user = $res->users->email;
-               $resDTO->movie = $res->movies->name;
+               $resDTO->email = $res->email;
+               $resDTO->movie = $res->name;
                $resDTO->quantity = $res->qtypersons;
                $resDTO->total = $res->totalprice;
                $resDTO->dateFrom = $res->datefrom;
                $resDTO->dateTo = $res->dateto;
-              $resDTO->number = $res->seat->number;
+              $resDTO->number = $res->number;
               $resArr[] = $resDTO;
           }
-        return  array('data' =>  $resArr , 'count' => $catCount);
+   return array('data' =>  $resArr , 'count' => $catCount);
+
     }
 
     public function findReservation(int $id): ReservationDTO
     {
-        $res = Reservation::with( ['users','movies' , 'seat'])->findOrFail($id);
+        $res = Reservation::query()->leftJoin('seat as s' , 'reservation.id' , '=' , 's.id')->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' , 's.number','u.email' , 'm.name')->where('reservation.id' , '=' , $id)->first();
         $resDTO = new ReservationDTO();
         $resDTO->id = $res->id;
-        $resDTO->user = $res->users->email;
-        $resDTO->movie = $res->movies->name;
+        $resDTO->user = $res->email;
+        $resDTO->movie = $res->name;
         $resDTO->quantity = $res->qtypersons;
         $resDTO->total = $res->totalprice;
         $resDTO->dateFrom = $res->datefrom;
         $resDTO->dateTo = $res->dateto;
-        $resDTO->number = $res->seat->number;
-        return $resDTO;
+        $resDTO->number = $res->number;
+       return $resDTO;
     }
 
     public function addReservationUser(ReservationRequest $request)
@@ -162,7 +163,7 @@ class ReservationService extends BaseService implements ReservationContract
     }
 
 
-    public function modifyReservation(ReservationRequest $request ,int $id)
+    public function modifyReservation(ReservationAdminRequest $request ,int $id)
     {
      //   $userId = $request->get('userId');
         $this->userId = auth()->id();
@@ -205,7 +206,8 @@ class ReservationService extends BaseService implements ReservationContract
 
     public function deleteReservation(int $id)
     {
-        $res = Reservation::findOrFail($id);
+      //  $res = Reservation::findOrFail($id);
+        $res = Seat::with('seat')->where( 're_id' , $id);
         if ($res != null ) {
             $res->delete();
         }

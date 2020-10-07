@@ -15,7 +15,7 @@ interface ReservationContract
     public function findReservation(int $id): ReservationDTO;
     public function addReservation( ReservationAdminRequest $request);
     public function addReservationUser(ReservationRequest $request);
-    public function modifyReservation( ReservationRequest $request ,int $id);
+    public function modifyReservation( ReservationAdminRequest $request ,int $id);
     public function deleteReservation(int $id);
 
 }

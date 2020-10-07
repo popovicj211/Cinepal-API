@@ -11,7 +11,7 @@ class Reservation extends  Model
         'user_id', 'movie_id' , 'qtypersons' , 'totalprice' , 'datefrom' , 'dateto'
     ];
 
-    public function user(){
+    public function users(){
           return $this->belongsTo(User::class);
     }
 
@@ -20,7 +20,7 @@ class Reservation extends  Model
     }
 
     public function seat(){
-        return $this->hasMany(Seat::class);
+        return $this->belongsToMany(Seat::class);
     }
 
 }

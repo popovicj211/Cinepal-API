@@ -25,8 +25,12 @@ class Movies extends  Model
     public function actors(){
         return $this->belongsToMany(Actors::class , 'movies_actors' , 'movie_id' , 'actor_id');
     }
-    public function reservation(){
+   /* public function reservation(){
         return $this->hasOne(Reservation::class);
+    }*/
+
+    public function reservation(){
+        return $this->hasMany(Reservation::class , 'movie_id' , 'id , ');
     }
 
     public function  pricelist(){

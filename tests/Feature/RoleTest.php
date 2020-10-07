@@ -19,62 +19,35 @@ use Mockery;
 
 class RoleTest extends TestCase
 {
-    use RefreshDatabase  , WithFaker;
     protected $mock;
 
+
     /**
-     * @test
-     * Test
+     * Create user and get token
+     * @return string
      */
+    protected function authenticate(){
 
-    // Roles - user is authentificate
-
-    public function addRoleTest_IfUserIsAutentificate(){
-
-           factory( Role::class )->create();
-        /* Role::create([
-             'name' => $this->faker->name,
-             'created_at' => Carbon::now()
-         ]);*/
-
-
-        $response = $this->json('POST',route('admin.addRole'),[
-            'name' => 'AdminTesting',
-            'created_at' => Carbon::now()
-        ]);
-        $response->assertStatus(201);
-        //Get count and assert
-        /*    $count = $this->user->users()->count();
-            $this->assertEquals(1,$count);*/
+        $user = User::first();
+        $token = auth()->login($user);
+        return $token;
     }
 
+
+    // Testiranje CRUD-a uloge za admin panel ako je korisnik autorizovan
+
     /**
      * @test
      * Test
      */
 
-    public function getRolesTest_IfUserIsAutentificate(){
 
-        $role = Role::create([
-            'name' => 'AdminTesting',
-            'created_at' => Carbon::now()->toDateTime()
-        ]);
-        $role->save();
-        $user = User::create([
-            'name' => 'Test Test',
-            'username' => 'test2',
-            'email' => 'test2@gmail.com',
-            'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('Secret1234'),
-            'role_id' => 1,
-            'email_token' => md5(time().'test2@gmail.com'.rand(1,10000)),
-            'created_at' => Carbon::now()
-        ]);
-        $login = auth()->login($user);
-        $token = auth()->attempt($login);
-        $this->withHeaders([
+    public function getRolesAdminTest_IfUserIsAutentificated(){
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
             'Authorization' => 'Bearer '.$token,
-        ])->json('GET',  route('admin.getRoles'))->assertStatus(200);
+        ])->json('GET',route('admin.getRoles'));
+        $response->assertStatus(200);
     }
 
 
@@ -83,12 +56,17 @@ class RoleTest extends TestCase
      * Test
      */
 
-// Roles - user is not authentificate
+    public function addRoleAdminTest_IfUserIsAutentificated(){
 
-    public function getRolesTest_IfUserIsNotAutentificate(){
-
-        $this->json('GET',  route('admin.getRoles'))
-            ->assertStatus(401);
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addRole') , [
+            'name' => 'Moderator'
+        ]);
+        $response->assertStatus(201)->assertExactJson([
+            'message' => "Role is successfully added"
+        ]);
 
     }
 
@@ -97,37 +75,205 @@ class RoleTest extends TestCase
      * Test
      */
 
-    public function updateRoleTest_IfUserIsNotAutentificated(){
+    public function getRoleForEditAdminTest_IfUserIsAutentificated(){
 
-        $this->json('PUT',  route('admin.updateRole',['id' => 1]) ,[
-            'name' => 'AdminTest',
-            'created_at' => Carbon::now()
-        ])->assertStatus(401);
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('GET',route('admin.getRoleEdit' , ['id' => 2]) );
+        $response->assertStatus(200);
 
     }
+
     /**
      * @test
      * Test
      */
 
-    public function getRoleEditTest_IfUserIsNotAutentificated(){
+    public function updateRoleAdminTest_IfUserIsAutentificated(){
 
-        $this->json('GET',  route('admin.getRoleEdit', ['id' => 1]))
-            ->assertStatus(401)->assertJson([
-                "message"=> "Please, attach a Bearer Token to your request"
-            ]);
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateRole' , ['id' => 1]) , [
+            'name' => 'Moderator'
+        ] );
+        $response->assertStatus(204);
 
     }
+
     /**
      * @test
      * Test
      */
 
-    public function deleteRoleTest_IfUserIsNotAutentificated(){
+    public function deleteRoleAdminTest_IfUserIsAutentificated(){
 
-        $this->json('DELETE',  route('admin.deleteRole'))
-            ->assertStatus(401);
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('DELETE',route('admin.deleteRole' , ['id' => 17]));
+        $response->assertStatus(204);
+
     }
+
+    // Testiranje CRUD-a uloge za admin panel ako korisnik nije autorizovan
+
+    /**
+     * @test
+     * Test
+     */
+
+
+    public function getRolesAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('GET',route('admin.getRoles'));
+        $response->assertStatus(401);
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function addRoleAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('POST',route('admin.addRole') , [
+            'name' => 'Moderator'
+        ]);
+        $response->assertStatus(401);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function getRoleForEditAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('GET',route('admin.getRoleEdit' , ['id' => 2]) );
+        $response->assertStatus(401);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function updateRoleAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('PUT',route('admin.updateRole' , ['id' => 1]) , [
+            'name' => 'Moderator'
+        ] );
+        $response->assertStatus(401);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function deleteRoleAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('DELETE',route('admin.deleteRole' , ['id' => 17]));
+        $response->assertStatus(401);
+
+    }
+
+    //Testiranje validacije podataka
+
+
+    /**
+     * @test
+     * Test
+     */
+    public  function addRoleAdminTest__WrongValidateDataTest(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addRole'),[
+            'name' => "Mo" ,
+
+        ]);
+        $response->assertStatus(422);
+
+    }
+
+
+
+    /**
+     * @test
+     * Test
+     */
+    public  function updateRoleAdminTest__WrongValidateDataTest(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateRole' , ['id' => 17]),[
+            'name' => "Mo" ,
+        ]);
+        $response->assertStatus(422);
+
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+    public  function addRoleAdminTest__EmptyDataTest(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addRole'),[
+            'name' => '' ,
+        ]);
+        $response->assertStatus(422);
+
+    }
+
+
+
+    /**
+     * @test
+     * Test
+     */
+    public  function updateRoelAdminTest__EmptyDataTest(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateRole' , ['id' => 17]),[
+            'name' => '' ,
+        ]);
+        $response->assertStatus(422);
+
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+
+
+    // Testiranje tabele baze podataka da li postoji
+
+    public function testDatabase()
+    {
+
+        $this->assertDatabaseHas('roles', [
+            'name' => 'User'
+        ]);
+    }
+
 
     /**
      * @test

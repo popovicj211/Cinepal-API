@@ -26,6 +26,7 @@ class ReservationController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param PaginateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(PaginateRequest $request)
@@ -119,7 +120,7 @@ class ReservationController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ReservationRequest $request, $id)
+    public function update(ReservationAdminRequest $request, $id)
     {
         try {
             $this->service->modifyReservation($request, $id);

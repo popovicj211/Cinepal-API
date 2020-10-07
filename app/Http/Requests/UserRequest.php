@@ -36,10 +36,13 @@ class UserRequest extends FormRequest
     {
        return [
                   "name.regex" => "Name is not valid",
+                 "name.required" => "Name is required",
                   "username.regex" => "Username is not valid",
+                  "username.required" => "Username is required",
                   "email.unique" => "Email is exist",
                    "email.required" => "Email is not valid",
                   "password.regex" => "Password must have at least one uppercase letter, lowercase letter and digit, 7 characters long ",
+           "password.required" => "Password is required"
              ];
      }
 

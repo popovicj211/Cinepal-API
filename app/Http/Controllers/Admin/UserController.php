@@ -39,8 +39,7 @@ class UserController extends ApiController
             $this->result['getUsers'] = $this->NotFound("Users not found");
         }
 
-        return $this->result['getUsers'];
-
+      return $this->result['getUsers'];
     }
 
     /**

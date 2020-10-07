@@ -102,12 +102,17 @@ private $verifyEmail;
            $this->mailer->verification();
       try {
           $user = User::create([
+               'id' => null,
               'name' => $request->get('name'),
               'username' => $request->get('username'),
               'email' =>  $email,
+               'email_verified_at' => Carbon::now()->toDateTime(),
               'password' => Hash::make($request->get('password')),
-              //'role_id' => self::ROLESG,
-               'email_token' => $this->tokenEmail
+              'role_id' => self::ROLESG,
+               'email_token' => $this->tokenEmail,
+               'remember_token' => null,
+               'created_at' => Carbon::now()->toDateTime(),
+                'updated_at' => null
           ]);
                $user->save();
           $token = auth()->login($user);
@@ -121,28 +126,21 @@ private $verifyEmail;
     }
 
     public function verify($tokenemail){
-         try {
-             $user = User::where('email_token', '=' ,$tokenemail);
-             $user->update([
-                 'email_verified_at' => Carbon::now()
-             ]);
-       //  $pr = $this->verifyEmail->Activate($token);
 
-         }catch (QueryException $e){
-             Log::error("Error, verify user:".$e->getMessage());
-          //   return response()->json("Error, verify is not successfully" , 500);
-             return  redirect()->route('showverify')->with("message" , "Verify is not successfully");
-         }catch (ModelNotFoundException $e){
-            return  redirect()->route('showverify');
-        }
-             return response()->json("Verify is successfully" , 200);
-      //  return redirect()->route('showverify')->with("message" , "Verify is not successfully");
-      //  return response()->json(["token" => $tokenemail]);
-    }
+            try {
+                $user = User::where('email_token', '=', $tokenemail);
+                $user->update([
+                    'email_verified_at' => Carbon::now()
+                ]);
 
-
-    public function showverify(){
-            return view('welcome');
+            } catch (QueryException $e) {
+                Log::error("Error, verify user:" . $e->getMessage());
+                //   return response()->json("Error, verify is not successfully" , 500);
+                return redirect()->route('showverify')->with("message", "Verify is not successfully");
+            } catch (ModelNotFoundException $e) {
+                return redirect()->route('showverify');
+            }
+            return response()->json("Verify is successfully", 200);
     }
 
     protected function respondWithToken($token)
@@ -155,12 +153,14 @@ private $verifyEmail;
 
     }
 
-    public function tk(){
-        $credentials = ['email' => 'geni@gmail.com' , 'password' => 'Geni1234'];
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-         return dd($token);
+    public function  loginShow(){
+        return  view('form');
     }
+
+     public function welcome(){
+         view('welcome');
+     }
+
+
 
 }

@@ -2,102 +2,326 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Slides;
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-//use Tymon\JWTAuth\JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Http\UploadedFile;
 
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Auth;
 class SlidesTest extends TestCase
 {
-    use RefreshDatabase ;
-    protected $user;
-/*
+    private $mock;
+
+    /**
+     * Create user and get token
+     * @return string
+     */
     protected function authenticate(){
-        $user = User::create([
-            'email' => 'geni@gmail.com',
-            'password' => Hash::make('Geni1234'),
-        ]);
-        $this->user = $user;
-        $token = JWTAuth::fromUser($user);
+
+        $user = User::first();
+        $token = auth()->login($user);
         return $token;
-    }*/
-
-
-
-
-      public function testGetSlides(){
-          $response = $this->json('GET',route('slides'));
-          $response->assertStatus(200);
-
-        }
-
-    public function testGetSlidesAdmin(){
-        //$response = $this->json('GET',route('slides-admin'));
-
-
-      //  $credentials = [ 'email' => 'geni@gmail.com', 'password' => 'Geni1234'];
-      /*  if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }*/
-
-        $user = auth()->user();
-        $token = JWTAuth::fromUser($user);
-
-        $credentials = ['email' => 'geni@gmail.com' , 'password' => 'Geni1234'];
-
-               /* if(!$token = auth()->attempt($credentials)){
-                    return response()->json(['error' => 'Unauthorized'], 401);
-                }*/
-
-     //   $credentials = ['email' => 'testr@gmail.com' , 'password' => 'Test21234'];
-
-
-      /*  $response = $this->withHeaders([
-            'Authorization' => 'Bearer '.$token
-        ])->json('GET',route('slides-admin'));*/
-
-            $response = $this->json('GET',route('admin.slides-get'));
-            //Assert it was successful and a token was received
-            $response->assertStatus(200);
-            $response->withHeaders([
-                'Authorization' => 'Bearer '.$token
-            ]);
-
-
-
-
-
-
-     /*   $credentials = request(['email', 'password']);
-        if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        $response = $this->withHeaders([
-            'Authorization' => 'Bearer '. $token
-        ])->json('GET',route('slides-admin'));
-
-
-        $response->assertStatus(200);
-
-        */
-       /* $credentials = [ 'email' => 'geni@gmail.com', 'password' => 'Geni1234'];
-        $token= \JWTAuth::fromUser($credentials);
-        $this->get(route('slides-admin'), ['Authorization' => "Bearer $token"])->assertStatus(200);*/
-
-
     }
 
 
 
 
+    // Testiranje - uzimanje podataka za prikaz slideshow-a
+
+    /**
+     * @test
+     * Test
+     */
 
 
+    public function getSlidesTest(){
+        $response = $this->json('GET',route('slides'));
+        $response->assertStatus(200);
+    }
+
+
+// Testiranje CRUD-a slideshow-a za admin panel ako je korisnik autorizovan
+
+
+
+    /**
+     * @test
+     * Test
+     */
+
+      public function getSlidesAdminTest_IfUserIsAutentificated(){
+
+          $usr = auth()->user();
+
+              $token = $this->authenticate();
+          $response = $this->withHeaders([
+              'Authorization' => 'Bearer '.$token,
+          ])->json('GET',route('admin.getSlides'));
+                  $response->assertStatus(200);
+
+        }
+    /**
+     * @test
+     * Test
+     */
+
+    public function addSlideAdminTest_IfUserIsAutentificated(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addSlide') , [
+                   'slideImage' => UploadedFile::fake()->image('slideMovie.jpg') ,
+                    'header' => 'Super filmovi',
+                    'text' => 'Super filmoviii'
+        ]);
+        $response->assertStatus(201)->assertExactJson([
+            'message' => "Slide is successfully added",
+        ]);
+
+    }
+
+
+    /**
+ * @test
+ * Test
+ */
+
+    public function getSlideForEditAdminTest_IfUserIsAutentificated(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('GET',route('admin.getSlideEdit' , ['id' => 1]) );
+        $response->assertStatus(200);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function updateSlideAdminTest_IfUserIsAutentificated(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateSlide' , ['id' => 1]) , [
+            'slideImage' => UploadedFile::fake()->image('slideMovie.jpg') ,
+            'header' => 'Super filmovi',
+            'text' => 'Super filmoviii'
+        ] );
+        $response->assertStatus(204);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function deleteSlideAdminTest_IfUserIsAutentificated(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('DELETE',route('admin.deleteSlide' , ['id' => 1]));
+        $response->assertStatus(204);
+
+    }
+
+// Testiranje CRUD-a slideshow-a za admin panel ako korisnik nije autorizovan
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function getSlidesAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('GET',route('admin.getSlides'));
+        $response->assertStatus(401);
+
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function addSlideAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('POST',route('admin.addSlide') , [
+            'slideImage' => UploadedFile::fake()->image('slideMovie.jpg') ,
+            'header' => 'Super filmovi',
+            'text' => 'Super filmoviii'
+        ]);
+        $response->assertStatus(401);
+
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function getSlideForEditAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('GET',route('admin.getSlideEdit' , ['id' => 1]) );
+        $response->assertStatus(401);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function updateSlideAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('PUT',route('admin.updateSlide' , ['id' => 1]) , [
+            'slideImage' => UploadedFile::fake()->image('slideMovie.jpg') ,
+            'header' => 'Super filmovi',
+            'text' => 'Super filmoviii'
+        ] );
+        $response->assertStatus(401);
+
+    }
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function deleteSlideAdminTest_IfUserIsNotAutentificated(){
+
+        $response = $this->json('DELETE',route('admin.deleteSlide' , ['id' => 1]));
+        $response->assertStatus(401);
+
+    }
+
+    // Testiranje validacije podataka
+
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function addSlideAdminTest_WrongValidateData(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addSlide') , [
+            'slideImage' => 'slikaaa' ,
+            'header' => 'i',
+            'text' => 'i'
+        ]);
+        $response->assertStatus(422);
+
+    }
+    /**
+     * @test
+     * Test
+     */
+
+    public function updateSlideAdminTest_WrongValidateData(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateSlide' , ['id' => 1]) , [
+            'slideImage' => 'slikaa' ,
+            'header' => 'i',
+            'text' => 'i'
+        ] );
+        $response->assertStatus(422);
+
+    }
+
+
+    /**
+     * @test
+     * Test
+     */
+
+    public function addSlideAdminTest_EmptyData(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('POST',route('admin.addSlide') , [
+            'slideImage' => null ,
+            'header' => '',
+            'text' => ''
+        ]);
+        $response->assertStatus(422);
+
+    }
+    /**
+     * @test
+     * Test
+     */
+
+    public function updateSlideAdminTest_EmptyData(){
+
+        $token = $this->authenticate();
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->json('PUT',route('admin.updateSlide' , ['id' => 1]) , [
+            'slideImage' => null ,
+            'header' => '',
+            'text' => ''
+        ] );
+        $response->assertStatus(422);
+
+    }
+
+    // Testiranje tabele baze podataka da li postoji
+
+    public function testDatabase()
+    {
+
+        $this->assertDatabaseHas('slides', [
+            'header' => 'Watch the new movies'
+        ]);
+
+    }
+
+
+    // Testiranje interfejsa
+
+    public function tearDown(): void
+    {
+        \Mockery::close();
+    }
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->mock('App\Contracts\SlidesContract');
+    }
+
+    public function mock($class)
+    {
+        $this->mock = \Mockery::mock($class);
+
+        $this->app->instance($class, $this->mock);
+
+        return $this->mock;
+    }
+
+    public function testGetSlidesContract()
+    {
+        $this->mock->shouldReceive('getSlides')->once();
+
+        $response = $this->call('GET', '/api/slidess');
+        $response->assertStatus(200);
+    }
 
 
 }

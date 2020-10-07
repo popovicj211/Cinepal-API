@@ -7,7 +7,7 @@ namespace App\DTO;
 class ReservationDTO
 {
         public $id;
-        public $user;
+        public $email;
         public $movie;
         public $quantity;
         public $total;

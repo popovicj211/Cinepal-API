@@ -30,7 +30,7 @@ class ReservationAdminRequest extends FormRequest
             'total' => 'required|regex:/^[0-9]{0,5}(\.)[0-9]{1,2}$/',
             'datefrom' => 'required|date|date_format:Y-m-d H:i:s',
             'dateto' => 'required|date|after:datefrom|date_format:Y-m-d H:i:s',
-            'number' => 'required|numeric|array'
+            'number' => 'required|array'
         ];
     }
 
@@ -42,10 +42,9 @@ class ReservationAdminRequest extends FormRequest
             'qty.required' => 'Quantity is required',
             'total.required' => 'Total price is required',
             'total.regex' => 'Total price not valid',
-            'datefrom.regex' => 'Date from is required',
-            'dateto.regex' => 'Date to is required',
-            'number.required' => 'Seat number is required',
-            'number.numeric' => 'Seat number must be number'
+            'datefrom.required' => 'Date from is required',
+            'dateto.required' => 'Date to is required',
+            'number.required' => 'Seat number is required'
         ];
     }
 }

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 SeatcheckerTableSeeder::class,
                 PricelistTableSeeder::class,
                 ReservationTableSeeder::class,
-                SeatTableSeeder::class,
+               // SeatTableSeeder::class,
                MenuTableSeeder::class
         ]);
     }
