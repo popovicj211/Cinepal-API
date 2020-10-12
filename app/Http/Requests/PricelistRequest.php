@@ -24,6 +24,7 @@ class PricelistRequest extends FormRequest
     public function rules()
     {
         return [
+            'movieId' => 'required|numeric',
              'catId' => 'required|numeric',
              'price' => 'required|regex:/^[0-9]{0,4}(\.)[0-9]{1,2}$/'
         ];
@@ -32,6 +33,7 @@ class PricelistRequest extends FormRequest
     public function messages()
     {
         return [
+            'movieId.required' => 'Movie is required',
             'catId.required' => 'Tehnology is required',
             'price.required' => 'Price is required',
             'price.regex' => 'Price not valid'

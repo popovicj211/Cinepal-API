@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 class MoviesRequest extends FormRequest
 {
@@ -29,7 +30,7 @@ class MoviesRequest extends FormRequest
              'desc' => 'required|max:2000',
               'rel' => 'required|date|after:tomorrow|date_format:Y-m-d H:i:s',
              'runtime' => 'required|numeric',
-              'image' => 'required|file|mimes:jpg,jpeg,png|max:2000',
+             'image' => 'nullable|file|mimes:jpg,jpeg,png|max:2000',
               'year' => 'required|numeric',
               'category' => 'required|array',
                'actors' => 'required|array'
@@ -41,14 +42,14 @@ class MoviesRequest extends FormRequest
         return [
             'name.required'  => 'Name is required.',
             'desc.required'  => 'Date is required.',
-            'rel.required'  => 'Relase datetime is required.',
+           'rel.required'  => 'Relase datetime is required.',
             'runtime.required'  => 'Runtime is required.',
             'year.required'  => 'Year is required.',
-            'category.required'  => 'Category is required.',
+         'category.required'  => 'Category is required.',
              'actors.required' => 'Actors are required',
-            'image.required'  => 'Image is not uploaded.',
-            'image.mimes'  => 'This image extension is not allowed .',
-            'image.max'  => 'Maximum size of image is 2 MB.',
+           'image.required'  => 'Image is not uploaded.',
+           'image.mimes'  => 'This image extension is not allowed .',
+          'image.max'  => 'Maximum size of image is 2 MB.',
             'name.max'  => 'Name must max 250 characters.',
             'desc.max'  => 'Description must max 250 characters.',
         ];

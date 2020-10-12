@@ -69,10 +69,7 @@ class CategoriesTableSeeder extends Seeder
         ];
 
            foreach ($categories as $cat){
-               Categories::create([
-                    'name' => $cat->name,
-                    'subcategory_id' => $cat->subcategory_id
-               ]);
+               Categories::create($cat);
            }
     }
 }

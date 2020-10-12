@@ -10,7 +10,7 @@ use App\Http\Requests\PaginateRequest;
 use App\Models\Actors;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ActorsService extends BaseService implements ActorsContract
 {
 
@@ -25,10 +25,10 @@ class ActorsService extends BaseService implements ActorsContract
           $page = $request->get('page');
           $perPage = $request->get('perPage');
           $actorsPag  = $this->generatePagedResponse( $actors, $perPage , $page);
-
+          $actCount = DB::table('actors')->count();
           $actorsArr = [];
 
-          foreach ($actorsPag as $actor)
+          foreach ($actorsPag['data'] as $actor)
           {
               $actorDTO = new ActorsDTO();
               $actorDTO->id = $actor->id;
@@ -37,7 +37,7 @@ class ActorsService extends BaseService implements ActorsContract
               $actorsArr[] = $actorDTO;
           }
 
-          return $actorsArr;
+          return  array('data' =>  $actorsArr , 'count' => $actCount);
       }
 
       public function findActor(int $id): ActorsDTO

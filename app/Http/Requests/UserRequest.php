@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             "name" => "required|regex:/^[A-Z][a-z]{3,24}(\s[A-Z][a-z]{3,24})+$/",
             "username" => "required|unique:users,username|regex:/^[\w\-\@\+\?\!\.]{3,19}$/",
             "email" => "required|email|unique:users,email",
-            "password"=> "required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d]).{8,}$/",
+            "password"=> "required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d]).{7,}$/",
         ];
 
     }
@@ -36,10 +36,13 @@ class UserRequest extends FormRequest
     {
        return [
                   "name.regex" => "Name is not valid",
+                 "name.required" => "Name is required",
                   "username.regex" => "Username is not valid",
+                  "username.required" => "Username is required",
                   "email.unique" => "Email is exist",
                    "email.required" => "Email is not valid",
-                  "password.regex" => "Please enter least one digit , upper and lower characters, 8 characters long ",
+                  "password.regex" => "Password must have at least one uppercase letter, lowercase letter and digit, 7 characters long ",
+           "password.required" => "Password is required"
              ];
      }
 

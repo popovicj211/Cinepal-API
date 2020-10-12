@@ -15,7 +15,9 @@ class CreatePricelistTable extends Migration
     {
         Schema::create('pricelist', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('movie_id');
             $table->unsignedInteger('cat_id');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->decimal('price')->unsigned();
             $table->timestamps();

@@ -10,7 +10,7 @@ use App\Http\Requests\ContactRequest;
 use App\Http\Requests\PaginateRequest;
 use App\Models\Contact;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 class ContactService extends BaseService implements ContactContract
 {
 
@@ -24,11 +24,13 @@ class ContactService extends BaseService implements ContactContract
        $contact = Contact::query();
        $page = $request->get('page');
        $perPage = $request->get('perPage');
-       $contactPag  = $this->generatePagedResponse( $contact, $perPage , $page);
+
+       $contactPag  = $this->generatePagedResponse($contact, $perPage , $page);
+       $contactCount = DB::table('contact')->count();
 
        $contactArr = [];
 
-       foreach ($contactPag as $contact)
+       foreach ($contactPag['data'] as $contact)
        {
            $contactDTO = new ContactDTO();
            $contactDTO->id = $contact->id;
@@ -39,7 +41,7 @@ class ContactService extends BaseService implements ContactContract
            $contactArr[] = $contactDTO;
        }
 
-       return $contactArr;
+       return array('data' => $contactArr , 'count' => $contactCount);
    }
 
    public function findContact(int $id): ContactDTO
@@ -77,6 +79,7 @@ class ContactService extends BaseService implements ContactContract
    {
         $request->validate([
                'contName' => 'required|min:3|max:250',
+                'contEmail' => 'required|email|unique:contact,email',
                'contSubject'=> 'required|min:3',
                'contMessage' => 'required|min:5'
         ]);

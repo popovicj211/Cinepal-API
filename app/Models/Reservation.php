@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends  Model
 {
+    protected  $table = 'reservation';
     protected $fillable = [
-        'user_id', 'movie_id' , 'pl_id' , 'qtypersons' , 'totalprice' , 'datefrom' , 'dateto'
+        'user_id', 'movie_id' , 'qtypersons' , 'totalprice' , 'datefrom' , 'dateto'
     ];
 
-    public function user(){
+    public function users(){
           return $this->belongsTo(User::class);
     }
 
@@ -18,12 +19,8 @@ class Reservation extends  Model
         return $this->belongsTo(Movies::class);
     }
 
-    public function pricelist(){
-        return $this->belongsTo(Pricelists::class);
-    }
-
     public function seat(){
-        return $this->hasMany(Seat::class);
+        return $this->belongsToMany(Seat::class);
     }
 
 }

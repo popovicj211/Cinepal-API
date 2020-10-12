@@ -11,6 +11,7 @@ interface UserContract
 {
          public function getUsers(PaginateRequest $request): array;
          public function findUser(int $id): UserDTO;
+          public function loginUser(string $email , string $password): UserDTO;
           public  function addUser(UserRequest $request);
           public  function modifyUser(Request $request ,int $id);
           public function deleteUser(int $id);

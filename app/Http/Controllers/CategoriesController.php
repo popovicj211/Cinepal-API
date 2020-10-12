@@ -24,10 +24,24 @@ class CategoriesController extends ApiController
             Log::error("Error, get movies:" . $e->getMessage());
             $this->result['categories'] = $this->ServerError("Error , categories are not got from server!");
         }catch (ModelNotFoundException $e){
-            $this->result['categories'] = $this->NotFound("Movie not found");
+            $this->result['categories'] = $this->NotFound("Categories not found");
         }
 
         return $this->result['categories'];
+    }
+
+    public function getTehnologiesMovie(int $movie){
+        $this->data['tehnologiesMovie'] = $this->service->getCategoryMovie($movie);
+        try {
+            $this->result['tehnologiesMovie'] = $this->Ok($this->data['tehnologiesMovie']);
+        } catch (QueryException $e) {
+            Log::error("Error, get tehnologies for movie :" . $e->getMessage());
+            $this->result['tehnologiesMovie'] = $this->ServerError("Error , tehnologies for movie are not got from server!");
+        }catch (ModelNotFoundException $e){
+            $this->result['tehnologiesMovie'] = $this->NotFound("Tehnologies for movie  not found");
+        }
+
+        return $this->result['tehnologiesMovie'];
     }
 
 

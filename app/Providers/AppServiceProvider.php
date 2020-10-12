@@ -7,6 +7,10 @@ use App\Contracts\CategoriesContract;
 use App\Contracts\ContactContract;
 use App\Contracts\MoviesContract;
 use App\Contracts\PricelistContract;
+use App\Contracts\ReservationContract;
+use App\Contracts\RoleContract;
+use App\Contracts\SeatcheckerContract;
+use App\Contracts\SeatConstract;
 use App\Contracts\SlidesContract;
 use App\Contracts\UserContract;
 use App\Services\ActorsService;
@@ -14,6 +18,10 @@ use App\Services\CategoriesService;
 use App\Services\ContactService;
 use App\Services\MoviesService;
 use App\Services\PricelistService;
+use App\Services\ReservationService;
+use App\Services\RoleService;
+use App\Services\SeatCheckerService;
+use App\Services\SeatService;
 use App\Services\SlidesService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +42,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ContactContract::class , ContactService::class);
         $this->app->singleton(PricelistContract::class , PricelistService::class);
         $this->app->singleton(UserContract::class, UserService::class);
+        $this->app->singleton(ReservationContract::class , ReservationService::class);
+        $this->app->singleton(SeatcheckerContract::class , SeatCheckerService::class);
+        $this->app->singleton(RoleContract::class , RoleService::class);
     }
 
     /**

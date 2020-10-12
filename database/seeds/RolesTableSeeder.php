@@ -14,11 +14,12 @@ class RolesTableSeeder extends Seeder
     {
           $roles = ["Admin" , "User"];
 
-          foreach ($roles as $role){
+          for ($i = 0; $i < count($roles); $i++){
                 Role::create([
-                      'name' => $role
+                      'name' => $roles[$i]
                 ]);
           }
+       // factory(App\Models\Role::class , 2)->create();
 
     }
 }

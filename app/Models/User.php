@@ -14,17 +14,6 @@ class User extends Authenticatable implements JWTSubject
 {
    use Notifiable;
 
-
-    public function getJWTIdentifier()
-   {
-       return $this->getKey();
-   }
-
-   public function getJWTCustomClaims()
-   {
-       return [];
-   }
-
     protected $table = "users";
     protected $fillable = [
         'name','username','email','email_verified_at', 'password' ,'role_id', 'email_token'
@@ -44,7 +33,17 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function reservation(){
-           return $this->hasOne(Reservation::class);
+           return $this->hasMany(Reservation::class, 'user_id' , 'id');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 
 }

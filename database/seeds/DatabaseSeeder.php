@@ -20,8 +20,15 @@ class DatabaseSeeder extends Seeder
                YearsTableSeeder::class,
                MoviesTableSeeder::class,
                ContactTableSeeder::class,
+               CategoriesTableSeeder::class,
                MoviesCategoriesTableSeeder::class,
-               MoviesActorsTableSeeder::class
+               MoviesActorsTableSeeder::class,
+                SlidesTableSeeder::class,
+                SeatcheckerTableSeeder::class,
+                PricelistTableSeeder::class,
+                ReservationTableSeeder::class,
+               // SeatTableSeeder::class,
+               MenuTableSeeder::class
         ]);
     }
 }

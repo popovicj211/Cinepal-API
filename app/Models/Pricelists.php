@@ -9,15 +9,15 @@ class Pricelists extends Model
     protected $table = 'pricelist';
 
     protected $fillable = [
-        'cat_id' ,  'price'
+        'movie_id', 'cat_id' ,'price'
     ];
 
-    public function  categories(){
-         return $this->belongsTo(Categories::class , 'cat_id' , 'id' , 'pricelists');
+    public function  pricecat(){
+        return $this->belongsTo(Categories::class );
     }
-/*
-    public function  reservation(){
-        return $this->hasOne(Placeseat::class);
+
+    public function pricemovies(){
+        return $this->belongsTo(Movies::class );
     }
-*/
+
 }

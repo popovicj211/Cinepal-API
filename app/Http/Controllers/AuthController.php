@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Contracts\UserContract;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
-use App\Mail\UserVerification;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
@@ -17,37 +18,38 @@ use Illuminate\Support\Facades\Log;
 use App\Mail\PHPMail;
 use Illuminate\Support\Facades\DB;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     public $loginAfterSignUp = true;
 private const ROLESG = 2;
 private $tokenEmail;
 private $mailer;
 private $verifyEmail;
+
     /**
      * Create a new AuthController instance.
      *
-     * @param PHPMail $mailer
+     * @param UserContract $service
      */
-   public function __construct()
+   public function __construct(UserContract $service)
     {
+            parent::__construct($service);
+            $this->service = $service;
      //   $this->middleware('auth:api', ['except' => ['login']]);
          // parent::__construct();
                $this->mailer = new PHPMail();
-               $this->verifyEmail = new UserVerification();
     }
 
     public function login(Request $request)
     {
 
         $credentials = $request->only(['email', 'password']);
+     //    $credentials = $request->only([$request->get('email') , $request->get('password')]);
+            if (!$token = auth()->attempt($credentials)) {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
 
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return response()->json(array('message' => "Successfully logged in" , "token" => $this->respondWithToken($token)));
-
+          return  response()->json(['message' => 'Successfully logged in','user'=> $this->me() , 'token' => $this->respondWithToken($token) ]);
     }
 
     /**
@@ -100,12 +102,17 @@ private $verifyEmail;
            $this->mailer->verification();
       try {
           $user = User::create([
+               'id' => null,
               'name' => $request->get('name'),
               'username' => $request->get('username'),
               'email' =>  $email,
+               'email_verified_at' => Carbon::now()->toDateTime(),
               'password' => Hash::make($request->get('password')),
               'role_id' => self::ROLESG,
-               'email_token' => $this->tokenEmail
+               'email_token' => $this->tokenEmail,
+               'remember_token' => null,
+               'created_at' => Carbon::now()->toDateTime(),
+                'updated_at' => null
           ]);
                $user->save();
           $token = auth()->login($user);
@@ -119,28 +126,21 @@ private $verifyEmail;
     }
 
     public function verify($tokenemail){
-         try {
-             $user = User::where('email_token', '=' ,$tokenemail);
-             $user->update([
-                 'email_verified_at' => Carbon::now()
-             ]);
-       //  $pr = $this->verifyEmail->Activate($token);
 
-         }catch (QueryException $e){
-             Log::error("Error, verify user:".$e->getMessage());
-          //   return response()->json("Error, verify is not successfully" , 500);
-             return  redirect()->route('showverify')->with("message" , "Verify is not successfully");
-         }catch (ModelNotFoundException $e){
-            return  redirect()->route('showverify');
-        }
-             return response()->json("Verify is successfully" , 200);
-      //  return redirect()->route('showverify')->with("message" , "Verify is not successfully");
-      //  return response()->json(["token" => $tokenemail]);
-    }
+            try {
+                $user = User::where('email_token', '=', $tokenemail);
+                $user->update([
+                    'email_verified_at' => Carbon::now()
+                ]);
 
-
-    public function showverify(){
-            return view('welcome');
+            } catch (QueryException $e) {
+                Log::error("Error, verify user:" . $e->getMessage());
+                //   return response()->json("Error, verify is not successfully" , 500);
+                return redirect()->route('showverify')->with("message", "Verify is not successfully");
+            } catch (ModelNotFoundException $e) {
+                return redirect()->route('showverify');
+            }
+            return response()->json("Verify is successfully", 200);
     }
 
     protected function respondWithToken($token)
@@ -152,6 +152,14 @@ private $verifyEmail;
         ];
 
     }
+
+    public function  loginShow(){
+        return  view('form');
+    }
+
+     public function welcome(){
+         view('welcome');
+     }
 
 
 

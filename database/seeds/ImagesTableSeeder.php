@@ -12,28 +12,34 @@ class ImagesTableSeeder extends Seeder
     public function run()
     {
         $images = [
+              [
+                'link' => 'slider_'.time().'.jpg'
+              ],
+              [
+                'link' => 'slider2_'.time().'.jpg'
+              ],
                [
-                 'link' => 'badboysforlife.jpg'
+                 'link' => 'badboysforlife_'.time().'.jpg'
                ],
               [
-                  'link' => 'blackwidow.jpg'
+                  'link' => 'blackwidow_'.time().'.jpg'
               ],
               [
-                'link' => 'lighthouse.jpg'
+                'link' => 'lighthouse_'.time().'.jpg'
               ],
               [
-                'link' => 'thenewmutants.jpg'
+                'link' => 'thenewmutants_'.time().'.jpg'
               ],
               [
-                'link' => 'topgun.jpg'
+                'link' => 'topgun_'.time().'.jpg'
               ],
              [
-                'link' => 'waspnetwork.jpg'
+                'link' => 'waspnetwork_'.time().'.jpg'
              ],
         ];
 
          foreach ($images as $image){
-                 Images::create($image)->unique();
+                 Images::create($image);
          }
 
     }

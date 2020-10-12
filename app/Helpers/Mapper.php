@@ -7,7 +7,7 @@ namespace App\Helpers;
 class Mapper
 {
 
-         static function maping( $movie ,$value, $subid = null ){
+         static function maping( $movie , $value , $subid = null ){
               if($subid != null){
                   $categories = $movie->filter(function ($item) use ($subid) {
                       return $item->subcategory_id == $subid;
@@ -18,7 +18,7 @@ class Mapper
               }
 
               $mapingKeys = $collection->mapWithKeys(function ($item) use ($value) {
-                  return [$item['id'] => $item[$value]];
+                  return  [$item['id'] => $item[$value]];
               });
 
             return  $mapingKeysResult = $mapingKeys->all();

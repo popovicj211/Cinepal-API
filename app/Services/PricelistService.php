@@ -23,12 +23,12 @@ class PricelistService extends BaseService implements PricelistContract
 
          public function getPrice(): array
          {
-             $prices = Pricelists::with('categories')->get();
+            $prices = Pricelists::with('categories' , 'movies')->get();
              $priceArr = [];
-             foreach ($prices as $price)
-             {
+             foreach ($prices as $price) {
                  $priceDTO = new PricelistDTO();
                  $priceDTO->id = $price->id;
+                 $priceDTO->movie = $price->movies->name;
                  $priceDTO->cat = $price->categories->name;
                  $priceDTO->price = $price->price;
                  $priceArr[] = $priceDTO;
@@ -39,23 +39,28 @@ class PricelistService extends BaseService implements PricelistContract
 
          public function findPrice(int $id): PricelistDTO
          {
-             $price = Pricelists::with('categories')->findOrFail($id);
+             $price = Pricelists::with('categories' , 'movies')->findOrFail($id);
              if($price != null) {
                  $priceDTO = new PricelistDTO();
                  $priceDTO->id = $price->id;
+                 $priceDTO->movie = $price->movies->name;
                  $priceDTO->cat = $price->categories->name;
                  $priceDTO->price = $price->price;
                  return $priceDTO;
              }
          }
 
+
+
          public function addPrice(PricelistRequest $request)
          {
+             $movie = $request->get('movieId');
              $cat = $request->get('catId');
              $price = $request->get('price');
 
 
              $pricelist = Pricelists::create([
+                 'movie_id' => $movie,
                  'cat_id' => $cat,
                   'price' => $price
              ]);
@@ -66,11 +71,13 @@ class PricelistService extends BaseService implements PricelistContract
 
          public function modifyPrice(PricelistRequest $request, int $id)
          {
+             $movie = $request->get('movieId');
              $cat = $request->get('catId');
              $price = $request->get('price');
              $pricelist =  Pricelists::findOrFail($id);
 
              $pricelist->update([
+                 'movie_id' => $movie,
                  'cat_id' => $cat,
                  'price' => $price,
                  'updated_at' => Carbon::now()->toDateTime()

@@ -9,6 +9,7 @@ interface CategoriesContract
 {
       public function getAllCategories(int $id): array;
       public function getCategory(int $cat ,int $id): CategoriesDTO;
+      public function  getCategoryMovie(int $movie );
       public function addCategory(CategoriesRequest $request);
       public function  modifyCategory(CategoriesRequest $request , $id);
       public function deleteCategory(int $id);

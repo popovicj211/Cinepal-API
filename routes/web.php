@@ -21,3 +21,7 @@ Route::get('/activate/{token}', 'AuthController@verify');
 
 
 Route::get('/show' ,  'AuthController@showverify')->name('showverify');
+
+Route::get('/login' , 'AuthController@loginShow')->name('loginShow');
+Route::get('/loginbrowser' , 'AuthController@loginBrowser')->name('loginBrowser');
+Route::get('/welcome'  , 'AuthController@welcome')->name('welcome');

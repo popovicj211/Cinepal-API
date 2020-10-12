@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaginateRequest;
-
+use Illuminate\Support\Facades\DB;
 
 class UserService extends BaseService implements UserContract
 {
@@ -26,14 +26,11 @@ class UserService extends BaseService implements UserContract
                $perPage = $request->get('perPage');
                $users =  User::with('role');
                $usersPag  = $this->generatePagedResponse($users, $perPage , $page);
-           //    return  $result ;
-
-
-
+               $usrCount = DB::table('users')->count();
 
                $usersArr = [];
 
-               foreach ($usersPag as $user)
+               foreach ($usersPag['data'] as $user)
                {
                    $userDTO = new UserDTO();
 
@@ -46,22 +43,35 @@ class UserService extends BaseService implements UserContract
                    $usersArr[] = $userDTO;
                }
 
-                 return $usersArr;
+                 return array( 'data' => $usersArr , 'count' => $usrCount);
            }
 
            public function findUser(int $id): UserDTO
            {
-               $user = User::find($id);
+               $user = User::with('role')->findOrFail($id);
+               if($user != null) {
+                   $userDTO = new UserDTO();
+                   $userDTO->id = $user->id;
+                   $userDTO->name = $user->name;
+                   $userDTO->username = $user->username;
+                   $userDTO->email = $user->email;
+                   $userDTO->role = $user->role->name;
+                   return $userDTO;
+               }
+           }
 
+       public function loginUser(string $email , string $password): UserDTO
+       {
+        $user = User::with('role')->where([['email' , '=', $email] , [ 'password' , '=' , Hash::make($password) ]])->first();
                $userDTO = new UserDTO();
                $userDTO->id = $user->id;
                $userDTO->name = $user->name;
+                $userDTO->username = $user->username;
                $userDTO->email = $user->email;
                $userDTO->role = $user->role->name;
 
                return $userDTO;
-
-           }
+      }
 
          public function addUser(UserRequest $request)
          {
