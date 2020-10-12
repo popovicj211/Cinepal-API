@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2020 at 04:16 PM
+-- Generation Time: Oct 08, 2020 at 03:19 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -52,32 +52,6 @@ INSERT INTO `actors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (10, 'Charlie Heaton', '2020-04-25 11:00:00', NULL),
 (11, 'Ana de Armas', '2020-04-25 11:00:00', NULL),
 (12, 'Penelope Cruz', '2020-04-25 11:00:00', NULL),
-(13, 'Mrs. Myrna Crooks', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(14, 'Dameon Gulgowski', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(15, 'Lewis Becker', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(16, 'Mr. August Feeney', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(17, 'Dr. Miles Veum', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(18, 'Brooke Kulas', '2020-05-17 14:38:41', '2020-05-17 14:38:41'),
-(19, 'Milford Abshire', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(20, 'Rene Kassulke', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(21, 'Wava Langosh Jr.', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(22, 'Eduardo Gleason', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(23, 'Theodore Lebsack', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(24, 'Mrs. Isabell Shanahan PhD', '2020-05-17 14:38:41', '2020-05-17 14:38:42'),
-(25, 'Russel Streich', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(26, 'Prof. Jeramy Johnston MD', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(27, 'Thelma Kuvalis', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(28, 'Jo Friesen', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(29, 'Landen Corkery', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(30, 'Berenice Hoeger', '2020-05-17 14:47:13', '2020-05-17 14:47:13'),
-(31, 'Kelvin Stracke', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(32, 'Jacklyn Hauck II', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(33, 'Clemens O\'Kon', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(34, 'Kacey Von III', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(35, 'Mariana Dare', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(36, 'Alfonzo Nitzsche', '2020-05-17 14:47:13', '2020-05-17 14:47:14'),
-(37, 'Roger Steuber I', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(38, 'Raina Hayes', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
 (39, 'Floy Effertz V', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
 (40, 'Prof. Burnice Davis', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
 (41, 'Shany Koelpin Sr.', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
@@ -87,7 +61,43 @@ INSERT INTO `actors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (45, 'Aiyana Will', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
 (46, 'Ms. Autumn Shanahan', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
 (47, 'Mr. Gayle Hudson', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
-(48, 'Keenan Stracke Jr.', '2020-05-17 14:51:09', '2020-05-17 14:51:09');
+(48, 'Keenan Stracke Jr.', '2020-05-17 14:51:09', '2020-05-17 14:51:09'),
+(49, 'Dr. Floyd Kessler', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(50, 'Dr. Orlando O\'Keefe', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(51, 'Dr. Lorenza Senger', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(52, 'Dr. Gwendolyn Quitzon DDS', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(53, 'Mr. Theron Marvin', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(54, 'Dr. Eleanora Leffler', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(55, 'Miss Hanna Pfeffer V', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(56, 'Dr. Sebastian Waters', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(57, 'Dr. Claudia Dare', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(58, 'Terrance Nitzsche', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(59, 'Dr. Burnice Champlin I', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(60, 'Dr. Alanis Marquardt Sr.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(61, 'Mrs. Aditya Armstrong', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(62, 'Nicola Legros I', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(63, 'Rylee Larkin', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(64, 'Mona Stanton', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(65, 'Erin Bartoletti', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(66, 'Rogelio Medhurst', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(67, 'Prof. Jalyn Bauch IV', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(68, 'Annabel Hartmann', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(69, 'Reagan Wintheiser', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(70, 'Evangeline Greenfelder', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(71, 'Minnie Schumm', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(72, 'Prof. Lionel Lang I', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(73, 'Pink McClure', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(74, 'Werner Rosenbaum', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(75, 'Jairo Hand', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(76, 'Kiel Dietrich', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(77, 'Mr. Chaz Kuvalis', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(78, 'Miss Birdie Ruecker Jr.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(79, 'Norbert Hintz DDS', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(80, 'Darby Stoltenberg', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(81, 'Vivianne O\'Conner III', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(82, 'Giovanny Mills', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(83, 'Ms. Opal Herman', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(84, 'Emmie McLaughlin', '2020-10-02 19:02:39', '2020-10-02 19:02:39');
 
 -- --------------------------------------------------------
 
@@ -120,7 +130,33 @@ INSERT INTO `categories` (`id`, `name`, `subcategory_id`, `created_at`, `updated
 (10, 'Digital 2D', 2, '2020-04-23 12:47:12', NULL),
 (11, 'Digital 3D', 2, '2020-04-25 02:09:12', NULL),
 (12, 'MX4D 2D', 2, '2020-04-25 06:13:11', NULL),
-(13, 'MX4D 3D', 2, '2020-04-24 22:16:12', NULL);
+(13, 'MX4D 3D', 2, '2020-04-24 22:16:12', NULL),
+(14, 'Genre', NULL, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(15, 'Tehnologies', NULL, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(16, 'Action', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(17, 'Comedy', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(18, 'Drama', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(19, 'Adventure', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(20, 'Sci-Fi', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(21, 'Fantasy', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(22, 'Thriler', 1, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(23, 'Digital 2D', 2, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(24, 'Digital 3D', 2, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(25, 'MX4D 2D', 2, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(26, 'MX4D 3D', 2, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(27, 'Genre', NULL, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(28, 'Tehnologies', NULL, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(29, 'Action', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(30, 'Comedy', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(31, 'Drama', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(32, 'Adventure', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(33, 'Sci-Fi', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(34, 'Fantasy', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(35, 'Thriler', 1, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(36, 'Digital 2D', 2, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(37, 'Digital 3D', 2, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(38, 'MX4D 2D', 2, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(39, 'MX4D 3D', 2, '2020-10-02 19:02:41', '2020-10-02 19:02:41');
 
 -- --------------------------------------------------------
 
@@ -164,7 +200,32 @@ INSERT INTO `contact` (`id`, `name`, `email`, `subject`, `message`, `created_at`
 (19, 'Rose Lebsack', 'sidney.bernhard@prohaska.biz', 'Mr.', 'Sunt dolores quaerat similique fuga quis suscipit laboriosam fuga. Minima et earum magni occaecati. Blanditiis quasi aliquid dicta nobis.', '2020-05-17 14:51:08', '2020-05-17 14:51:09'),
 (20, 'Melyssa Pagac', 'watsica.guillermo@kassulke.com', 'Ms.', 'Similique id aut ipsa nostrum ea consequatur. Debitis id rerum quam similique. Et ad consequatur necessitatibus.', '2020-05-17 14:51:08', '2020-05-17 14:51:09'),
 (21, 'Chanel Bashirian', 'clifton.brown@mcdermott.biz', 'Dr.', 'Ipsa assumenda earum perferendis. Ratione minima quas dignissimos explicabo.', '2020-05-17 14:51:08', '2020-05-17 14:51:09'),
-(23, 'Stefan Perovic', 'stefan@gmail.com', 'aaaa', 'aaaaaaaaaa', '2020-07-17 12:20:13', '2020-07-17 12:20:13');
+(23, 'Stefan Perovic', 'stefan@gmail.com', 'aaaa', 'aaaaaaaaaa', '2020-07-17 12:20:13', '2020-07-17 12:20:13'),
+(24, 'Adela Willms', 'katharina.beatty@hand.com', 'Miss', 'Ea molestiae in vitae provident aut debitis delectus. Optio autem magnam quibusdam sequi aut atque dolorem. Est ut esse molestiae nemo dolorem nam omnis. Et sequi tempore quo neque facilis ratione facilis.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(25, 'Ericka Sauer', 'robbie48@bernier.net', 'Miss', 'Est asperiores delectus aut illum et. Aperiam incidunt corrupti dolorem et quia et. Nobis rerum laborum eos magni iste dolore adipisci. Praesentium maiores ullam delectus.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(26, 'Reyna Dickens', 'skozey@schamberger.com', 'Prof.', 'Fugiat maxime aperiam occaecati architecto accusamus quod. Omnis fugiat qui nisi autem ipsa qui. Nam aut molestiae autem ab aut voluptatem omnis non. Velit amet doloribus in eaque voluptatem dignissimos aut.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(27, 'Dr. Lavinia Ullrich I', 'eankunding@yahoo.com', 'Ms.', 'Rerum ut in rerum architecto. Adipisci voluptatem aspernatur id dignissimos aut et occaecati. Blanditiis magni vitae maxime similique qui sunt. Et odit quia dolor aut omnis recusandae veniam.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(28, 'Frederick Gutmann', 'isabell01@hotmail.com', 'Mrs.', 'Adipisci eum dolore et vel. Voluptas distinctio ipsum et debitis incidunt. Aperiam consequatur repellat et quidem. Omnis quos et mollitia odio. Laboriosam sunt debitis illum accusantium ut fugit ad.', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(29, 'Miss Cassandre Stehr', 'yyundt@adams.com', 'Ms.', 'Deserunt aspernatur deleniti et amet tenetur culpa. Ea quod dolor pariatur vel voluptatem. Quia temporibus omnis sit earum culpa quia assumenda. Voluptas beatae fugit quo mollitia et.', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(30, 'Mr. Shawn Pollich DDS', 'emilia.krajcik@casper.com', 'Dr.', 'Nihil tempora praesentium fuga vel est. Eveniet ea repudiandae deleniti quis sit neque provident. Itaque aut culpa error mollitia pariatur. Alias placeat quia molestiae porro eligendi.', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(31, 'Miss Princess Douglas PhD', 'roselyn.gleichner@wiegand.com', 'Dr.', 'Quidem rem perspiciatis aut et doloremque molestiae. Ullam ad doloremque quia ut quasi sunt et. Nulla cumque voluptatem et veritatis. Corrupti modi et dolor autem. Hic labore a architecto iusto repudiandae.', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(32, 'Carli Watsica', 'nikolaus.ruthe@gmail.com', 'Prof.', 'Rerum consequatur ut qui aut veniam nisi. Sunt expedita commodi sed reprehenderit. In suscipit adipisci eum nostrum et impedit harum.', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(33, 'Hiram Beier IV', 'cloyd77@bailey.net', 'Ms.', 'Atque non deleniti earum asperiores similique qui. Blanditiis unde voluptates architecto cum. Quo debitis vel et officiis. Odit dolorem debitis veniam.', '2020-10-02 19:00:33', '2020-10-02 19:00:33'),
+(34, 'Edmund Crona', 'sylvia.legros@zulauf.biz', 'Mr.', 'Quis tenetur corporis sed. Qui voluptatem iste architecto sequi incidunt. Quia illo corrupti quaerat. Soluta cum provident accusamus sit a velit natus.', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(35, 'Maxwell Howe', 'qdurgan@doyle.biz', 'Prof.', 'Voluptates vero esse vel eum repellendus et odio. Rerum optio omnis quia rerum ut autem expedita. Recusandae iure rerum architecto nihil porro.', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(36, 'Efrain Kozey PhD', 'ibednar@kirlin.com', 'Prof.', 'Est similique autem aperiam ipsa optio itaque. Beatae dolore deserunt architecto earum vero quas eos. Libero reprehenderit minima quia quisquam vero.', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(37, 'Andreanne Gislason', 'wreynolds@okuneva.info', 'Miss', 'Iusto delectus perspiciatis quis quo omnis. Voluptate ea dolor nulla ipsa quis. Molestiae provident id reprehenderit dolore et. Ad id autem rem optio ut deserunt numquam consequatur. Libero nisi ipsum rerum id.', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(38, 'Cory Hartmann II', 'terry01@yahoo.com', 'Miss', 'Cum aliquid quia dolorem culpa similique quod. Maiores mollitia provident in amet aut architecto quibusdam sapiente. Officia eveniet tenetur aut.', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(39, 'Micah Ondricka', 'waters.brando@hotmail.com', 'Dr.', 'Perferendis et harum provident blanditiis enim a. Nobis modi laborum non repudiandae eum molestiae. At non et perferendis id.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(40, 'Dr. Adalberto Macejkovic', 'harris.laverna@hotmail.com', 'Dr.', 'Molestias sed molestiae aliquam omnis quaerat voluptatum quisquam. Architecto fuga commodi aut reprehenderit. Ipsam explicabo rerum nihil assumenda et rem exercitationem.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(41, 'Palma Graham DDS', 'lindsey.rau@yahoo.com', 'Prof.', 'Voluptatem molestiae tempora illum est. Omnis et alias earum ratione minus. Quidem fuga quas consequatur maxime aut. Cupiditate voluptatibus officia iste facere sed quasi.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(42, 'Ms. Freda Hickle II', 'fhermann@nitzsche.com', 'Ms.', 'Repudiandae facilis porro non quaerat similique corrupti. Voluptatum placeat saepe explicabo eos et accusamus. Dolorum velit qui odio nihil. Velit natus cumque voluptates ab repudiandae eligendi sapiente ut.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(43, 'Summer Predovic III', 'keara.yundt@gmail.com', 'Mrs.', 'Ea aut placeat inventore ex. Et ut ut magnam consequatur eaque aut. Laudantium fugit omnis est harum facilis tempore rerum. Repellat in sit quibusdam aliquam totam illo fuga.', '2020-10-02 19:02:39', '2020-10-02 19:02:39'),
+(44, 'Laurine Abshire V', 'lea.strosin@predovic.com', 'Ms.', 'Excepturi velit accusantium sunt animi occaecati consequatur. Recusandae vel numquam iure et tempora illo reiciendis. Quia enim vero qui omnis tempora doloremque placeat. Sequi impedit magni minima.', '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(45, 'Maye Pfannerstill', 'blanda.meda@gmail.com', 'Prof.', 'Earum ut sed error quia in deserunt reiciendis minus. Eligendi vel praesentium totam officiis consequatur quia consequatur. Et dolorum dolores vel ex temporibus praesentium incidunt.', '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(46, 'Kamren Frami DDS', 'ydouglas@ferry.com', 'Prof.', 'Voluptate qui eius recusandae reprehenderit voluptas. Iure minima dolor accusantium voluptas debitis quo fuga pariatur. Et voluptatum nesciunt rerum animi est aut non. Dolores illo quaerat aut dolore voluptas dolores voluptatibus.', '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(47, 'Keanu Sipes', 'damore.cicero@rempel.com', 'Prof.', 'Exercitationem autem aliquam accusantium illo et rerum reiciendis illum. Quis sint sint et occaecati. Modi porro recusandae quaerat ratione corporis quo.', '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(48, 'Bianka Kertzmann', 'mharris@hotmail.com', 'Ms.', 'Et iure vitae iusto quod sint suscipit iusto ipsam. Delectus ab aperiam ipsam vel mollitia aut. Animi provident qui ut mollitia voluptatum. Eos aliquid omnis quo dolores.', '2020-10-02 19:02:41', '2020-10-02 19:02:41');
 
 -- --------------------------------------------------------
 
@@ -197,7 +258,18 @@ INSERT INTO `images` (`id`, `link`, `created_at`, `updated_at`) VALUES
 (11, 'assets/images/movies/lighthouse.jpg', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
 (12, 'assets/images/movies/thenewmutants.jpg', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
 (13, 'assets/images/movies/topgun.jpg', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(14, 'assets/images/movies/waspnetwork.jpg', '2020-05-17 14:38:42', '2020-05-17 14:38:42');
+(14, 'assets/images/movies/waspnetwork.jpg', '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
+(22, 'lighthouse_1601672433.jpg', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(23, 'thenewmutants_1601672433.jpg', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(24, 'topgun_1601672433.jpg', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(25, 'waspnetwork_1601672433.jpg', '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(26, 'slider_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(27, 'slider2_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(28, 'badboysforlife_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(29, 'blackwidow_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(30, 'lighthouse_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(31, 'thenewmutants_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(32, 'topgun_1601672560.jpg', '2020-10-02 19:02:40', '2020-10-02 19:02:40');
 
 -- --------------------------------------------------------
 
@@ -292,7 +364,18 @@ INSERT INTO `movies` (`id`, `name`, `description`, `release_date`, `running_time
 (4, 'Black widow', 'Scarlett Johansson reprises the role of Natasha / Black Widow in the Marvel action spectacle, the spy thriller \"BLACK WIDOW\" - the first film of the fourth stage of the Marvel movie universe. Florence Pew plays Jelena in the film, David Harbor is Alexei, better known as the Red Guard, and Rachel Weiss is Melina. The director of the film is Kate Shortland and the producer is Kevin Feigy.', '2020-11-06 15:00:00', 109, 2, 4, '2020-04-25 06:13:11', NULL),
 (5, 'Lighthouse', 'Two lighthouse keepers try to maintain common sense by living on a remote and mysterious island of New England before the end of the 19th century.', '2020-10-05 15:00:00', 125, 1, 5, '2020-04-25 02:09:12', NULL),
 (6, 'The new mutants', '20th Century Studio in collaboration with Marvel Entertainment presents the film New Mutants, an original horror thriller set in an isolated hospital, where a group of young mutants are under psychiatric surveillance. When strange things start happening, both their mutant abilities and their friendship will be put to the test as they fight for their lives.', '2020-10-08 18:30:00', 105, 3, 6, '2020-04-25 06:13:11', NULL),
-(7, 'Wasp network', 'In the late 1980s and early 1990s, Cuban groups from Florida, made up of opponents of Fidel Castro\'s regime, carried out fierce attacks in Cuba, dropping bombs on hotels and killing innocent people on the beach. In retaliation, the Cuban government inserts an elite group of spies into these terrorist groups in order to break them from within. Five of them eventually fall into the hands of the American authorities and face life imprisonment on charges of murder and espionage', '2020-10-15 16:00:00', 120, 2, 7, '2020-04-25 06:13:11', NULL);
+(7, 'Wasp network', 'In the late 1980s and early 1990s, Cuban groups from Florida, made up of opponents of Fidel Castro\'s regime, carried out fierce attacks in Cuba, dropping bombs on hotels and killing innocent people on the beach. In retaliation, the Cuban government inserts an elite group of spies into these terrorist groups in order to break them from within. Five of them eventually fall into the hands of the American authorities and face life imprisonment on charges of murder and espionage', '2020-10-15 16:00:00', 120, 2, 7, '2020-04-25 06:13:11', NULL),
+(21, 'maiores', 'Est doloribus dolores enim aut. Quo in non qui velit ex. Quia quidem ipsa consectetur unde. Blanditiis modi voluptatibus occaecati.', '2020-05-03 09:29:51', 159, 2, 4, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(22, 'molestiae', 'Amet optio rerum tenetur dolores quaerat. Quia ipsam qui ut excepturi. Eos ad incidunt amet placeat tempora non sit.', '2019-10-19 06:32:14', 144, 14, 4, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(23, 'odio', 'Illo minima eius aut enim eos exercitationem. Consequuntur quis dolor sapiente quaerat. Libero magnam non non facere. Voluptas odio qui est aut.', '2019-10-26 10:15:55', 132, 4, 14, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(24, 'aut', 'Aliquam dolorum sit sed in occaecati aperiam nobis labore. Laboriosam qui odit fugit eum. Officiis voluptatem ratione adipisci aliquam quos debitis odio impedit.', '2019-12-30 11:16:02', 137, 2, 23, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(25, 'illum', 'Consequatur est aut id. Qui inventore illum aut provident occaecati. Animi omnis explicabo eligendi vel. Atque sint voluptas sit rerum rerum id temporibus.', '2020-07-29 06:56:59', 112, 12, 10, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(26, 'officiis', 'At quod hic qui architecto. Perspiciatis officiis enim quisquam et.', '2020-01-22 01:57:50', 104, 15, 13, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(27, 'laboriosam', 'Velit et fugiat autem. Iste sint debitis corrupti. Illo eum saepe aut corporis dolorem.', '2020-01-28 19:02:43', 145, 12, 22, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(28, 'est', 'Assumenda illo eligendi necessitatibus quo est corporis. Quisquam quas impedit placeat voluptatum.', '2019-10-27 22:25:36', 142, 2, 13, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(29, 'inventore', 'Voluptatem reiciendis rerum doloremque quaerat qui. Reprehenderit itaque iusto reiciendis occaecati sit. Sint reiciendis similique architecto dolorem harum aperiam expedita.', '2020-05-26 05:41:00', 142, 10, 23, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(30, 'ipsa', 'Nostrum et in incidunt voluptas in reiciendis. Enim qui sapiente ratione numquam adipisci magni. Debitis in neque culpa.', '2020-06-22 11:00:43', 151, 19, 7, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(31, 'neque', 'Tenetur atque eum nihil possimus voluptatem fugit eligendi. Laborum eum at fugit. Modi consequatur temporibus id ducimus possimus est.', '2020-05-25 02:54:30', 113, 10, 13, '2020-10-02 19:02:40', '2020-10-02 19:02:41');
 
 -- --------------------------------------------------------
 
@@ -324,7 +407,35 @@ INSERT INTO `movies_actors` (`id`, `movie_id`, `actor_id`, `created_at`, `update
 (9, 6, 9, '2020-04-25 11:00:00', NULL),
 (10, 6, 10, '2020-04-25 11:00:00', NULL),
 (11, 7, 11, '2020-04-25 11:00:00', NULL),
-(12, 7, 12, '2020-04-25 11:00:00', NULL);
+(12, 7, 12, '2020-04-25 11:00:00', NULL),
+(13, 3, 42, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(14, 3, 10, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(18, 24, 57, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(19, 2, 53, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(24, 5, 45, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(25, 5, 72, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(27, 7, 63, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(30, 3, 10, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(32, 23, 3, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(34, 4, 8, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(35, 22, 1, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(36, 22, 41, '2020-10-02 19:00:35', '2020-10-02 19:00:36'),
+(37, 22, 60, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(39, 29, 64, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(40, 3, 45, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(42, 3, 79, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(43, 28, 12, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(44, 2, 72, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(46, 28, 7, '2020-10-02 19:02:42', '2020-10-02 19:02:42'),
+(47, 23, 42, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(48, 23, 42, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(51, 2, 7, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(52, 30, 5, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(55, 29, 76, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(56, 26, 56, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(57, 29, 5, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(58, 27, 50, '2020-10-02 19:02:42', '2020-10-02 19:02:43'),
+(59, 3, 8, '2020-10-02 19:02:42', '2020-10-02 19:02:43');
 
 -- --------------------------------------------------------
 
@@ -366,7 +477,46 @@ INSERT INTO `movies_categories` (`id`, `movie_id`, `category_id`, `created_at`, 
 (27, 5, 10, '2020-04-25 03:07:03', NULL),
 (28, 6, 10, '2020-04-25 03:07:03', NULL),
 (29, 6, 12, '2020-04-25 05:00:55', NULL),
-(30, 7, 10, '2020-04-25 03:07:03', NULL);
+(30, 7, 10, '2020-04-25 03:07:03', NULL),
+(31, 23, 14, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(32, 22, 26, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(33, 23, 18, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(34, 21, 3, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(35, 21, 15, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(36, 7, 3, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(37, 6, 8, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(39, 22, 19, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(40, 3, 26, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(41, 3, 13, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(42, 23, 2, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(43, 24, 20, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(44, 3, 16, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(45, 4, 1, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(46, 23, 19, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(47, 6, 14, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(48, 23, 22, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(49, 4, 19, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(50, 7, 2, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(51, 7, 2, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(52, 24, 25, '2020-10-02 19:00:35', '2020-10-02 19:00:35'),
+(53, 27, 5, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(54, 28, 38, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(55, 21, 30, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(56, 4, 29, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(57, 27, 2, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(58, 29, 23, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(59, 21, 21, '2020-10-02 19:02:41', '2020-10-02 19:02:41'),
+(62, 28, 2, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(63, 22, 35, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(64, 31, 23, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(65, 31, 2, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(66, 29, 36, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(67, 30, 26, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(68, 26, 8, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(69, 30, 25, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(71, 25, 3, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(72, 30, 18, '2020-10-02 19:02:41', '2020-10-02 19:02:42'),
+(74, 4, 13, '2020-10-02 19:02:41', '2020-10-02 19:02:42');
 
 -- --------------------------------------------------------
 
@@ -500,13 +650,10 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `user_id`, `movie_id`, `qtypersons`, `totalprice`, `datefrom`, `dateto`, `created_at`, `updated_at`) VALUES
-(3, 1, 4, 2, '9.00', '2020-08-16 00:20:07', '2020-06-19 15:00:00', '2020-08-15 22:20:07', '2020-08-15 22:20:07'),
-(4, 1, 3, 2, '8.40', '2020-08-16 16:26:56', '2020-11-03 15:00:00', '2020-08-16 14:26:56', '2020-08-16 14:26:56'),
 (5, 1, 4, 2, '9.00', '2020-08-16 17:15:49', '2020-11-06 15:00:00', '2020-08-16 15:15:49', '2020-08-16 15:15:49'),
 (6, 2, 3, 1, '4.20', '2020-09-25 14:21:10', '2020-11-03 15:00:00', '2020-09-25 12:21:11', '2020-09-25 12:21:11'),
 (7, 2, 3, 1, '4.20', '2020-09-25 14:32:08', '2020-11-03 15:00:00', '2020-09-25 12:32:08', '2020-09-25 12:32:08'),
-(8, 2, 3, 1, '4.20', '2020-09-25 14:57:38', '2020-11-03 15:00:00', '2020-09-25 12:57:38', '2020-09-25 12:57:38'),
-(9, 2, 5, 1, '3.30', '2020-09-25 15:02:49', '2020-10-05 15:00:00', '2020-09-25 13:02:49', '2020-09-25 13:02:49');
+(11, 1, 2, 2, '20.25', '2020-10-12 16:40:00', '2020-12-28 18:00:00', '2020-10-04 12:38:16', '2020-10-04 12:38:16');
 
 -- --------------------------------------------------------
 
@@ -527,7 +674,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', '2020-04-23 12:47:12', NULL),
-(2, 'User', '2020-04-25 02:09:12', NULL);
+(2, 'User', '2020-04-25 02:09:12', NULL),
+(17, 'TestingUser', '2020-10-02 22:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -548,13 +696,10 @@ CREATE TABLE `seat` (
 --
 
 INSERT INTO `seat` (`id`, `number`, `re_id`, `created_at`, `updated_at`) VALUES
-(5, 3, 4, '2020-08-16 14:26:56', NULL),
-(6, 4, 4, '2020-08-16 14:26:56', NULL),
 (7, 5, 5, '2020-08-16 15:15:49', NULL),
 (10, 13, 7, '2020-09-25 12:32:08', NULL),
 (11, 14, 7, '2020-09-25 12:32:08', NULL),
-(14, 9, 9, '2020-09-25 13:02:49', NULL),
-(15, 10, 9, '2020-09-25 13:02:49', NULL);
+(17, 40, 11, '2020-10-04 12:38:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -588,7 +733,19 @@ INSERT INTO `seatchecker` (`id`, `seat`, `free`, `created_at`, `updated_at`) VAL
 (12, 11, 1, '2020-06-08 19:56:51', '2020-07-31 20:12:32'),
 (13, 12, 1, '2020-06-08 19:56:55', '2020-07-31 20:12:32'),
 (14, 13, 0, '2020-06-08 19:56:58', '2020-09-25 12:57:38'),
-(15, 14, 0, '2020-06-08 19:57:02', '2020-09-25 12:57:38');
+(15, 14, 0, '2020-06-08 19:57:02', '2020-09-25 12:57:38'),
+(17, 194250, 1, '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(18, 830772, 0, '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(19, 1763, 0, '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(20, 63, 1, '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(22, 596967, 0, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(23, 18707, 1, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(24, 85434076, 1, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(25, 306, 0, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(26, 677, 1, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(27, 633367, 0, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(28, 73243, 1, '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(29, 9864, 0, '2020-10-02 19:02:43', '2020-10-02 19:02:43');
 
 -- --------------------------------------------------------
 
@@ -611,7 +768,11 @@ CREATE TABLE `slides` (
 
 INSERT INTO `slides` (`id`, `img_id`, `header`, `text`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Watch the new movies', '', '2020-04-23 12:47:12', NULL),
-(2, 2, '', '', '2020-04-25 02:09:12', NULL);
+(2, 2, '', '', '2020-04-25 02:09:12', NULL),
+(3, 2, 'Mr.', 'Quas placeat est amet minus nostrum dolorem. Laudantium quidem laudantium fugiat a. Porro asperiores saepe qui eos est. Facilis enim et reiciendis et quidem recusandae dicta.', '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(4, 1, 'Miss', 'Aperiam aut deserunt ab deleniti. Quo est eos eligendi.', '2020-10-02 19:00:36', '2020-10-02 19:00:36'),
+(5, 1, 'Ms.', 'Quae voluptatem sunt veritatis eum non dolores. Asperiores inventore cupiditate fugit odio sit enim. Voluptatem veniam qui perspiciatis unde sint praesentium.', '2020-10-02 19:02:43', '2020-10-02 19:02:43'),
+(6, 2, 'Dr.', 'Pariatur sapiente nam et quos. Possimus nesciunt aut cum est et maiores. Et autem est quia est aut. Est accusamus et reiciendis aut dolorum neque. Ut magni maxime nam animi rerum.', '2020-10-02 19:02:43', '2020-10-02 19:02:43');
 
 -- --------------------------------------------------------
 
@@ -657,7 +818,9 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 (24, 'Moralna Pobedabaa', 'moralnabacaa', 'moralnapobedabacaa71@gmail.com', '2020-05-15 22:16:45', '$2y$10$oPL5lPqFVDum3WRr2hnele9KM.37BiaKTxIvzTVjfkuN0C3jGCVAG', 2, '453367593cc51d95e1d3acb6343f028a', NULL, '2020-05-15 22:16:28', '2020-05-15 22:16:45'),
 (25, 'Jamar Schuppe', 'precious.beahan', 'vicente.tillman@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'b96a87f416bc9cfc56ffea11bebc89b4', '6F0m7ppCmH', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
 (26, 'Ronaldo Kertzmann', 'lilian74', 'twaters@example.com', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, '5c09abe1aa05639b02af16fc02422d2d', 'Q9MuCPPZfE', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
-(27, 'Oda Halvorson IV', 'jedediah65', 'maggio.corbin@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'f521e62ef54f84f2c19841252dc43e5b', 'gBTnzKrqjf', '2020-05-17 14:30:37', '2020-05-17 14:30:37');
+(27, 'Oda Halvorson IV', 'jedediah65', 'maggio.corbin@example.org', '2020-05-17 14:30:37', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'f521e62ef54f84f2c19841252dc43e5b', 'gBTnzKrqjf', '2020-05-17 14:30:37', '2020-05-17 14:30:37'),
+(50, 'Carmela Conroy', 'julien41', 'maud.keebler@example.com', '2020-10-02 18:56:04', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, '4c46b3b652d92cff266ff1b3627e7a58', 'NOPVgaLtSg', '2020-10-02 18:56:04', '2020-10-02 18:56:04'),
+(58, 'Giles Dach I', 'mitchell.pierre', 'callie75@example.org', '2020-10-02 19:00:33', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'ade61ec159de41012491afe2de790bb9', 'FMbWBqvpMn', '2020-10-02 19:00:33', '2020-10-02 19:00:33');
 
 -- --------------------------------------------------------
 
@@ -686,7 +849,17 @@ INSERT INTO `years` (`id`, `year`, `created_at`, `updated_at`) VALUES
 (7, 2019, '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
 (8, 2018, '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
 (9, 2017, '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
-(10, 2016, '2020-05-17 14:38:42', '2020-05-17 14:38:42');
+(10, 2016, '2020-05-17 14:38:42', '2020-05-17 14:38:42'),
+(11, 2020, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(12, 2019, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(13, 2018, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(14, 2017, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(15, 2016, '2020-10-02 19:00:34', '2020-10-02 19:00:34'),
+(16, 2020, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(17, 2019, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(18, 2018, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(19, 2017, '2020-10-02 19:02:40', '2020-10-02 19:02:40'),
+(20, 2016, '2020-10-02 19:02:40', '2020-10-02 19:02:40');
 
 --
 -- Indexes for dumped tables
@@ -863,25 +1036,25 @@ ALTER TABLE `years`
 -- AUTO_INCREMENT for table `actors`
 --
 ALTER TABLE `actors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -899,19 +1072,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `movies_actors`
 --
 ALTER TABLE `movies_actors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `movies_categories`
 --
 ALTER TABLE `movies_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -935,31 +1108,31 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `seat`
 --
 ALTER TABLE `seat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `seatchecker`
 --
 ALTER TABLE `seatchecker`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `subscribe`
@@ -971,13 +1144,13 @@ ALTER TABLE `subscribe`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `years`
 --
 ALTER TABLE `years`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

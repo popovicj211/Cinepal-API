@@ -275,31 +275,6 @@ class RoleTest extends TestCase
     }
 
 
-    /**
-     * @test
-     * Test
-     */
-
-    public function mockingRole(){
-           Mockery::mock('App\Models\Role');
-    }
-
-
-    public function testControllerMovies()
-    {
-
-
-
-       // $venueController = new MoviesController('App\Contracts\MoviesContract');
-       // $venueController->getMovie(1);
-       // $this->assertEquals($this->mock->find(1),2);
-        $interfaceMock = Mockery::mock('App\Contracts\MoviesContract');
-        $interfaceMock->shouldReceive('getNewMovies')->once()->andReturn(1);
-
-        $moviesControlller = new MoviesController($interfaceMock);
-
-    }
-
 
 
 }

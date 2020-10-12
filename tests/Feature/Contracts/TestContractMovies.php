@@ -78,17 +78,6 @@ class TestContractMovies extends TestCase
 
 
 
-    /**
-     * @test
-     * Test
-     */
-
-
-public function er(){
-
-
-
-}
 
 
 }
