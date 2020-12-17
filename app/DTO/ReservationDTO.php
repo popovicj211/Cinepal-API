@@ -13,5 +13,5 @@ class ReservationDTO
         public $total;
         public $dateFrom;
         public $dateTo;
-        public $number;
+        public $seat;
 }

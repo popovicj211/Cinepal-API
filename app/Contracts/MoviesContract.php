@@ -13,6 +13,6 @@ interface MoviesContract
       public function getMoviesCategories(int $cat , int $id, PaginateRequest $request): array ;
       public function getMovie(int $id): MoviesDTO;
       public function addMovie(MoviesRequest $request);
-      public function modifyMovie(Request $request , int $id );
+      public function modifyMovie(Request $request , int $id , int $img);
       public function deleteMovie(int $id);
 }

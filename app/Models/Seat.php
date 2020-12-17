@@ -8,11 +8,15 @@ class Seat extends Model
 {
     protected $table = 'seat';
     protected $fillable = [
-        'number', 'res_id'
+        'number', 'free'
     ];
 
-    public function Reservation(){
+   /* public function Reservation(){
         return $this->belongsTo(Reservation::class);
+    }*/
+
+    public function  reservation(){
+        return $this->belongsToMany(Reservation::class , 'reservation_seat' , 'seat_id' , 'res_id');
     }
 
 }

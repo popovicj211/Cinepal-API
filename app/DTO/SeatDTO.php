@@ -8,5 +8,5 @@ class SeatDTO
 {
         public $id;
         public $number;
-        public $reId;
+        public $free;
 }

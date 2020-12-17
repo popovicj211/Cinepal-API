@@ -31,9 +31,17 @@ class User extends Authenticatable implements JWTSubject
     {
             return $this->belongsTo(Role::class);
     }
+/*
+    public function reservation(){
+           return $this->hasOne(Reservation::class, 'user_id' , 'id');
+    }*/
+
+    public function reservation_movies(){
+        return $this->belongsToMany(Movies::class , 'reservation','user_id' , 'movie_id')->withPivot('id','qtypersons', 'totalprice' , 'datefrom' , 'dateto');
+    }
 
     public function reservation(){
-           return $this->hasMany(Reservation::class, 'user_id' , 'id');
+             return $this->hasMany(Reservation::class , 'user_id' , 'id' );
     }
 
     public function getJWTIdentifier()

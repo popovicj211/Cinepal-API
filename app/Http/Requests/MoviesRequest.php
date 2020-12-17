@@ -23,35 +23,47 @@ class MoviesRequest extends FormRequest
      *
      * @return array
      */
+
+
+
+
     public function rules()
     {
         return [
-             'name' => 'required|max:250',
-             'desc' => 'required|max:2000',
-              'rel' => 'required|date|after:tomorrow|date_format:Y-m-d H:i:s',
-             'runtime' => 'required|numeric',
-             'image' => 'nullable|file|mimes:jpg,jpeg,png|max:2000',
-              'year' => 'required|numeric',
-              'category' => 'required|array',
-               'actors' => 'required|array'
+             'addMovieName' => 'required|max:250',
+             'addMovieDesc' => 'required|max:2000',
+              'addMovieReldate' => 'required',
+            'addMovieReltime' => 'required',
+             'addMovieRuntime' => 'required|numeric',
+          //   'addMovieImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2000',
+           'addMovieImage' => 'required|base64image|base64mimes:jpg,jpeg,png|base64max:2000',
+              'addMovieYear' => 'required|numeric',
+              'checkArrayGenre' => 'required|array',
+               'checkArrayTehno' => 'required|array',
+               'checkArrayActor' => 'required|array'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'  => 'Name is required.',
-            'desc.required'  => 'Date is required.',
-           'rel.required'  => 'Relase datetime is required.',
-            'runtime.required'  => 'Runtime is required.',
-            'year.required'  => 'Year is required.',
-         'category.required'  => 'Category is required.',
-             'actors.required' => 'Actors are required',
-           'image.required'  => 'Image is not uploaded.',
-           'image.mimes'  => 'This image extension is not allowed .',
-          'image.max'  => 'Maximum size of image is 2 MB.',
-            'name.max'  => 'Name must max 250 characters.',
-            'desc.max'  => 'Description must max 250 characters.',
+            'addMovieName.required'  => 'Name is required.',
+            'addMovieDesc.required'  => 'Date is required.',
+           'addMovieReldate.required'  => 'Relase datetime is required.',
+            'addMovieReltime.required'  => 'Relase time is required.',
+            'addMovieRuntime.required'  => 'Runtime is required.',
+            'addMovieYear.required'  => 'Year is required.',
+           'checkArrayGenre.required'  => 'Genre is required.',
+            'checkArrayTehno.required'  => 'Tehnology is required.',
+             'checkArrayActor.required' => 'Actors are required',
+           'addMovieImage.required'  => 'Image is not uploaded.',
+          /* 'addMovieImage.mimes'  => 'This image extension is not allowed .',
+          'addMovieImage.max'  => 'Maximum size of image is 2 MB.',*/
+            'addMovieImage.base64image'  => 'This file  is not image.',
+            'addMovieImage.base64mimes'  => 'This image extension is not allowed .',
+            'addMovieImage.base64max'  => 'Maximum size of image is 2 MB.',
+            'addMovieName.max'  => 'Name must max 250 characters.',
+            'addMovieDesc.max'  => 'Description must max 250 characters.',
         ];
     }
 

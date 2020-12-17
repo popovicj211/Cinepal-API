@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Contracts\SlidesContract;
 use App\DTO\SlidesDTO;
 use App\Helpers\ImageResize;
+use App\Helpers\ImageValidator;
 use App\Http\Requests\PaginateRequest;
 use App\Http\Requests\SlidesRequest;
 use App\Models\Images;
@@ -14,11 +15,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class SlidesService extends BaseService implements SlidesContract
 {
-
-    public function __construct(ImageResize $rimg)
+private $rimg;
+private $valid;
+    public function __construct( ImageValidator $valid)
     {
-        parent::__construct($rimg);
-        $this->rimg = $rimg;
+      $this->valid = $valid;
     }
 
     function getSlides(): array

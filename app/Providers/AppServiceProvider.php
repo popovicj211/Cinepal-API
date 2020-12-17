@@ -25,6 +25,7 @@ use App\Services\SeatService;
 use App\Services\SlidesService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ReservationContract::class , ReservationService::class);
         $this->app->singleton(SeatcheckerContract::class , SeatCheckerService::class);
         $this->app->singleton(RoleContract::class , RoleService::class);
+
+
     }
 
     /**
@@ -54,6 +57,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
     }
 }

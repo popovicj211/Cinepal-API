@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\DB;
 class ContactService extends BaseService implements ContactContract
 {
 
-   public function __construct($rimg = null)
-   {
-       parent::__construct($rimg);
-   }
 
    public function getContact(PaginateRequest $request): array
    {

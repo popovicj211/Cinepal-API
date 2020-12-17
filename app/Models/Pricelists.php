@@ -12,12 +12,15 @@ class Pricelists extends Model
         'movie_id', 'cat_id' ,'price'
     ];
 
-    public function  pricecat(){
+    public function categories(){
         return $this->belongsTo(Categories::class );
     }
 
-    public function pricemovies(){
+    public function movies(){
         return $this->belongsTo(Movies::class );
     }
+
+
+
 
 }

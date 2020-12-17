@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\PaginateRequest;
+use App\Http\Requests\UserAdminRequest;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -58,7 +59,7 @@ class UserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(UserAdminRequest $request)
     {
         try {
             $this->service->addUser($request);

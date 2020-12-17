@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\DB;
 class CategoriesService extends BaseService implements CategoriesContract
 {
     private static $tenology = 2;
-    public function __construct($rimg = null)
-    {
-        parent::__construct($rimg);
-    }
+
 
     public function getAllCategories(int $id): array
     {

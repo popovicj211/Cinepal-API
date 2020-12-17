@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class MoviesController extends ApiController
 {
@@ -62,7 +63,7 @@ class MoviesController extends ApiController
         try {
             $this->service->addMovie($request);
              $this->result['addMovie'] = $this->Created('Movie is successfully added');
-        }catch (\Exception $e){
+        }catch (QueryException $e){
              Log::error("Error, add movie:" . $e->getMessage());
               $this->result['addMovie']  = $this->ServerError("Error , movie can not added on server!");
         }
@@ -122,10 +123,10 @@ class MoviesController extends ApiController
      * @param  int $img
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id )
+    public function update(Request $request, $id , $img )
     {
         try {
-            $this->service->modifyMovie($request, $id);
+            $this->service->modifyMovie($request, $id , $img );
             $this->result['modifyMovie'] = $this->NoContent();
         }catch (QueryException $e){
             Log::error("Error, movie is not modify:" . $e->getMessage());

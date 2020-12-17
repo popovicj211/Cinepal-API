@@ -2,78 +2,22 @@
 
 
 namespace App\Helpers;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class ImageResize
 {
-    private $hasFile;
-    private $file;
-    private $width;
-    private $height;
-    private $destroy;
-    /**
-     * @param mixed $hasFile
-     */
-    public function setHasFile($hasFile): void
+
+    public static function base64ToFile($base64, $path, $width = 400, $height = 400)
     {
-        $this->hasFile = $hasFile;
+        $imageCode = substr($base64, strpos($base64, ',') + 1);
+        $imageName = md5(rand(11111, 99999)) . '_' . time() . '.jpg';
+        $path = $path . $imageName;
+        $input = File::put($path, base64_decode($imageCode));
+        $image = Image::make($path)->resize($width, $height);
+        $result = $image->save($path);
+
+        return $imageName;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getHasFile()
-    {
-        return $this->hasFile;
-    }
-
-    /**
-     * @param mixed $file
-     */
-    public function setFile($file): void
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param mixed $destroy
-     */
-    public function setDestroy($destroy): void
-    {
-        $this->destroy = $destroy;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDestroy()
-    {
-        return $this->destroy;
-    }
-
-
-    public function resizeImg($width, $height ){
-        if($this->hasFile) {
-
-            $image = $this->file;
-            $filename = $image->getClientOriginalName();
-            $newFilename = time()."_".$filename;
-            $alt =  strstr( $newFilename,  '.'  , true);
-            $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize($width, $height);
-            $path = 'assets/images/movies/'.$newFilename;
-            $image_resize->save(public_path($path));
-            return array( 'link' => $newFilename , 'alt' => $alt );
-        }
-    }
-
 
 }

@@ -33,7 +33,7 @@ Route::group([
     'middleware' => ['api','jwt.verify','checkAdmin'],
     'prefix' => 'auth'
 ], function (){
-    Route::get('/categories/{id}' , 'Admin\CategoriesController@index')->where(['cat' => '[1-9]+'],['id' ,'[1-9]+'])->name('admin.getCategories');
+    Route::get('/categories/{id}' , 'Admin\CategoriesController@index')->where(['cat' => '[1-9]+'],['id' =>'[1-9]+'])->name('admin.getCategories');
     Route::get('/categories/{cat}/subcategory/{id}/edit' , 'Admin\CategoriesController@edit')->where(['cat' => '[1-9]+'],['id' ,'[1-9]+'])->name('admin.getCategoryEdit');
     Route::post('/categories' , 'Admin\CategoriesController@store')->name('admin.addCategory');
     Route::delete('/categories/{id}' , 'Admin\CategoriesController@destroy')->where('id' , '[1-9]+')->name('admin.deleteCategory');
@@ -43,7 +43,7 @@ Route::group([
     Route::get('/movies/{id}/edit' , 'Admin\MoviesController@edit')->where('id' , '[1-9]+')->name('admin.getMovieEdit');
     Route::get('/movies/{id}/show' , 'Admin\MoviesController@show')->where('id' , '[1-9]+')->name('admin.getMovieShow');
     Route::post('/movies' , 'Admin\MoviesController@store')->name('admin.addMovie');
-    Route::put('/movies/{id}' , 'Admin\MoviesController@update')->where('id' , '[1-9]+')->name('admin.updateMovie');
+    Route::put('/movies/{id}/image/{img}' , 'Admin\MoviesController@update')->where(['id' => '[1-9]+'],['img' =>'[1-9]+'])->name('admin.updateMovie');
     Route::delete('/movies/{id}' , 'Admin\MoviesController@destroy')->where('id' , '[1-9]+')->name('admin.deleteMovie');
 
     Route::get('/slides' , 'Admin\SlidesController@index')->name('admin.getSlides');

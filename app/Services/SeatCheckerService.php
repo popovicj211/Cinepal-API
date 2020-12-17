@@ -5,10 +5,10 @@ namespace App\Services;
 
 
 use App\Contracts\SeatcheckerContract;
-use App\DTO\SeatcheckerDTO;
+use App\DTO\SeatDTO;
 use App\Http\Requests\PaginateRequest;
 use App\Http\Requests\SeatcheckerRequest;
-use App\Models\SeatChecker;
+use App\Models\Seat;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -16,23 +16,18 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
 {
     private static $free = 0;
 
-    public function __construct($rimg = null)
-    {
-        parent::__construct($rimg);
-        $this->rimg = $rimg;
-    }
 
     public function getSeatCheckers(PaginateRequest $request): array
     {
         $page = $request->get('page');
         $perPage = $request->get('perPage');
-        $seatch = SeatChecker::query();
+        $seatch = Seat::query();
         $seatChPag  = $this->generatePagedResponse($seatch, $perPage , $page);
         $seatArr = [];
         foreach($seatChPag as $seat){
-            $seatChDTO = new SeatcheckerDTO();
+            $seatChDTO = new SeatDTO();
             $seatChDTO->id = $seat->id;
-            $seatChDTO->seat = $seat->seat;
+            $seatChDTO->number = $seat->number;
             $seatChDTO->free = $seat->free;
 
             $seatArr[] = $seatChDTO;
@@ -43,12 +38,12 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
     public function getSeatCheckerFree(bool $free): array
     {
 
-        $seatch = SeatChecker::where('free', $free)->get();
+        $seatch = Seat::where('free', $free)->get();
         $seatArr = [];
         foreach($seatch as $seat){
-            $seatChDTO = new SeatcheckerDTO();
+            $seatChDTO = new SeatDTO();
             $seatChDTO->id = $seat->id;
-            $seatChDTO->seat = $seat->seat;
+            $seatChDTO->number = $seat->number;
             $seatChDTO->free = $seat->free;
 
             $seatArr[] = $seatChDTO;
@@ -56,12 +51,12 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
         return $seatArr;
     }
 
-    public function getSeatChecker(int $id): SeatcheckerDTO
+    public function getSeatChecker(int $id): SeatDTO
     {
-        $seat = SeatChecker::findOrFail($id);
-        $seatDTO = new SeatcheckerDTO();
+        $seat = Seat::findOrFail($id);
+        $seatDTO = new SeatDTO();
         $seatDTO->id = $seat->id;
-        $seatDTO->seat = $seat->seat;
+        $seatDTO->number = $seat->number;
         $seatDTO->free = $seat->free;
         return $seatDTO;
     }
@@ -75,36 +70,40 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
             'created_at' => Carbon::now()->toDateTime()
         ]);*/
 
-        $seat = $request->get('seat');
+        $seat = $request->get('number');
+        $free = $request->get('free');
 
         $arrSeat = [];
         foreach ($seat as $s) {
             $arr = [
-                'seat' => $s ,
+                'number' => $s ,
+                 'free' => $free,
                 'created_at' => Carbon::now()->toDateTime()
             ];
             $arrSeat[] = $arr;
         }
-        $seatAdd = SeatChecker::create($arrSeat);
+        $seatAdd = Seat::create($arr);
 
         $seatAdd->save();
     }
 
     public function modifySeatChecker(SeatcheckerRequest $request, int $id)
     {
-        $seat = $request->get('seat');
+        $seat = $request->get('number');
+        $free = $request->get('free');
 
         $arrSeat = [];
         foreach ($seat as $s) {
             $arr = [
-                'id'  => $id,
-                'seat' => $s ,
+                'number' => $s ,
+                'free' => $free,
                 'updated_at' => Carbon::now()->toDateTime()
             ];
             $arrSeat[] = $arr;
         }
-        $seatUp = SeatChecker::findOrFail($id);
-        $seatUp->update($arrSeat);
+        $seatUp = Seat::findOrFail($id);
+        $seatUp->update($arr);
+
     }
 
     public function modifySeatCheckerFree(Request $request, int $free)
@@ -114,20 +113,17 @@ class SeatCheckerService extends BaseService implements SeatcheckerContract
             'seat' => 'required|array',
             'free' => 'required|number'
         ]);*/
-        $seata = $request->get('seat');
+        $seata = $request->get('number');
        $freeSeat = $request->get('free');
 
-        $seatUp = SeatChecker::query()->whereIn('seat' , $seata)->where('free' , $free);
+        $seatUp = Seat::query()->whereIn('number' , $seata)->where('free' , $free);
         $seatUp->update(['free' => $freeSeat , 'updated_at' => Carbon::now()->toDateTime()]);
-    /*   return [
-             "seat" => $seata,
-              "free" => $freeSeat
-       ];*/
+
     }
 
     public function deleteSeaChecker(int $id)
     {
-        $seat = SeatChecker::findOrFail($id);
+        $seat = Seat::findOrFail($id);
         if ($seat != null ) {
             $seat->delete();
         }

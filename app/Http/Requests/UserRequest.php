@@ -42,7 +42,7 @@ class UserRequest extends FormRequest
                   "email.unique" => "Email is exist",
                    "email.required" => "Email is not valid",
                   "password.regex" => "Password must have at least one uppercase letter, lowercase letter and digit, 7 characters long ",
-           "password.required" => "Password is required"
+                  "password.required" => "Password is required"
              ];
      }
 

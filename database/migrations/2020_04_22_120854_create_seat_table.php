@@ -16,8 +16,9 @@ class CreateSeatTable extends Migration
         Schema::create('seat', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number')->unique();
-            $table->unsignedInteger('re_id');
-            $table->foreign('re_id')->references('id')->on('reservation')->onDelete('cascade');
+            $table->boolean('free')->default(1);
+         /*   $table->unsignedInteger('re_id');
+            $table->foreign('re_id')->references('id')->on('reservation')->onDelete('cascade');*/
             $table->timestamps();
         });
     }

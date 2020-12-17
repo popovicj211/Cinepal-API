@@ -2,17 +2,20 @@
 
 
 namespace App\Services;
+use App\Helpers\ImageValidator;
 use Illuminate\Database\Eloquent\Builder as Model;
 
 
 class BaseService
 {
-    protected $rimg;
+   /* protected $rimg;
+    protected $valid;
 
-    public function __construct( $rimg)
+    public function __construct( $rimg )
     {
               $this->rimg = $rimg;
-    }
+    }*/
+
 
     public function generatePagedResponse(Model $model, $perPage, $page )
     {

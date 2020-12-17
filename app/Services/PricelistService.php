@@ -9,45 +9,68 @@ use App\DTO\PricelistDTO;
 use App\Http\Requests\PaginateRequest;
 use App\Http\Requests\PricelistRequest;
 use App\Models\Categories;
+use App\Models\Movies;
 use App\Models\Pricelists;
 use Carbon\Carbon;
 
 
 class PricelistService extends BaseService implements PricelistContract
  {
-         public function __construct($rimg = null)
-         {
-             parent::__construct($rimg);
-             $this->rimg = $rimg;
-         }
+
 
          public function getPrice(): array
          {
-            $prices = Pricelists::with('categories' , 'movies')->get();
+
+            $prices = Movies::with('pricelist_categories')->get();
              $priceArr = [];
-             foreach ($prices as $price) {
-                 $priceDTO = new PricelistDTO();
-                 $priceDTO->id = $price->id;
-                 $priceDTO->movie = $price->movies->name;
-                 $priceDTO->cat = $price->categories->name;
-                 $priceDTO->price = $price->price;
-                 $priceArr[] = $priceDTO;
+
+             foreach($prices as $price){
+               $priceMC = $price->pricelist_categories;
+
+                 foreach($priceMC as $p){
+                     $priceDTO = new PricelistDTO();
+                     $priceDTO->movie = $price->name;
+                     $priceDTO->id = $p->pivot->id;
+                     $priceDTO->cat = $p->name;
+                     $priceDTO->price = $p->pivot->price;
+                    $priceArr[] = $priceDTO;
+                 }
+
              }
 
              return $priceArr;
          }
 
-         public function findPrice(int $id): PricelistDTO
+         public function findPrice(int $id): array
          {
-             $price = Pricelists::with('categories' , 'movies')->findOrFail($id);
-             if($price != null) {
+             $priceArr = [];
+          //   $prices = Movies::with('pricelist_categories')->get();
+             $price = Movies::findOrFail($id);
+
+          //   if($price != null) {
+              //   foreach ($price->pricelist_categories as $p) {
+                //     $priceDTO = new PricelistDTO();
+                 //    $priceDTO->movie = $price->name;
+              //       $priceDTO->id = $p->pivot->id;
+               //      $priceDTO->cat = $p->name;
+             //        $priceDTO->price = $p->pivot->price;
+                  //   $priceArr[] = $priceDTO;
+                   //  return $priceDTO;
+             //    }
+
+          //   }
+
+             foreach ($price->pricelist_categories as $p) {
                  $priceDTO = new PricelistDTO();
-                 $priceDTO->id = $price->id;
-                 $priceDTO->movie = $price->movies->name;
-                 $priceDTO->cat = $price->categories->name;
-                 $priceDTO->price = $price->price;
-                 return $priceDTO;
+                 $priceDTO->movie = $price->name;
+                 $priceDTO->id = $p->pivot->id;
+                      $priceDTO->cat = $p->name;
+                         $priceDTO->price = $p->pivot->price;
+                 $priceArr[] = $priceDTO;
              }
+
+
+             return $priceArr;
          }
 
 
@@ -62,7 +85,8 @@ class PricelistService extends BaseService implements PricelistContract
              $pricelist = Pricelists::create([
                  'movie_id' => $movie,
                  'cat_id' => $cat,
-                  'price' => $price
+                  'price' => $price,
+                 'created_at' => Carbon::now()->toDateTime()
              ]);
 
              $pricelist->save();

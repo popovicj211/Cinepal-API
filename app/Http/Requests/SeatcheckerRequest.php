@@ -24,7 +24,7 @@ class SeatcheckerRequest extends FormRequest
     public function rules()
     {
         return [
-              'seat' => 'required|array',
+              'number' => 'required|array',
                'free' => 'required|number'
         ];
     }
@@ -32,7 +32,7 @@ class SeatcheckerRequest extends FormRequest
     public function messages()
     {
         return [
-            'seat.required' => 'Seat number is required',
+            'number.required' => 'Seat number is required',
              'free.required' => 'Free number is required'
         ];
     }

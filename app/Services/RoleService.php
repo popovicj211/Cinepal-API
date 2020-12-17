@@ -13,11 +13,7 @@ class RoleService extends BaseService implements RoleContract
 {
 
 
-    public function __construct($rimg = null)
-    {
-        parent::__construct($rimg);
-        $this->rimg = $rimg;
-    }
+
 
      public function getRoles(): array {
          $roles = Role::all();

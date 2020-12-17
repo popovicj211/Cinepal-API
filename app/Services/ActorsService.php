@@ -11,13 +11,10 @@ use App\Models\Actors;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class ActorsService extends BaseService implements ActorsContract
+use Intervention\Image\Facades\Image;
+class ActorsService extends BaseService  implements ActorsContract
 {
 
-      public function __construct($rimg = null)
-      {
-          parent::__construct($rimg);
-      }
 
       public function getActors(PaginateRequest $request): array
       {
@@ -35,6 +32,15 @@ class ActorsService extends BaseService implements ActorsContract
               $actorDTO->name = $actor->name;
 
               $actorsArr[] = $actorDTO;
+            /*  $actorsArr[] = intVal(\Storage::disk('local')->size('test.jpg'));
+              $actorsArr[] = \Storage::disk('local')->url('test.jpg');
+              $actorsArr[] = \Storage::disk('local')->path('test.jpg');
+              $actorsArr[] = \Storage::disk('local')->mimeType('test.jpg');
+              $actorsArr[] = \Storage::disk('local')->has('test.jpg');
+              $actorsArr[] = \Storage::disk('local')->exists('test.jpg');
+              $actorsArr[] = Image::make(\Storage::disk('local')->path('test.jpg'))->width();
+              $actorsArr[] = Image::make(\Storage::disk('local')->path('test.jpg'))->height();*/
+
           }
 
           return  array('data' =>  $actorsArr , 'count' => $actCount);

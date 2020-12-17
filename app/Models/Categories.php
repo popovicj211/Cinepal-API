@@ -15,9 +15,14 @@ class Categories extends Model
     public function  movies(){
         return $this->belongsToMany(Movies::class ,   'movies_categories' , 'category_id' , 'movie_id' );
     }
+/*
+    public function pricelists(){
+            return $this->belongsToMany( Movies::class ,'pricelist', 'cat_id'  , 'movie_id');
+    }
+*/
 
-    public function pricelist(){
-            return $this->hasMany( Pricelists::class, 'cat_id'  , 'id');
+    public function pricelistMovies(){
+        return $this->belongsToMany( Movies::class ,'pricelist', 'cat_id'  , 'movie_id');
     }
 
     public function category()

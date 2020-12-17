@@ -11,56 +11,95 @@ use App\Http\Requests\ReservationAdminRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Movies;
 use App\Models\Reservation;
+use App\Models\ReservationSeat;
 use App\Models\Seat;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ReservationService extends BaseService implements ReservationContract
 {
           private $userId;
+           private static $free = 1;
+          private static $reserved = 0;
 
-    public function __construct($rimg = null)
-    {
-        parent::__construct($rimg);
-        $this->rimg = $rimg;
+
+
+    public function queryRes($id){
+       $resQuery = Reservation::query()->join('reservation_seat as rs' , 'reservation.id' , '=' , 'rs.res_id')->join('seat as s' , 'rs.seat_id' , '=' , 's.id')->where('reservation.id' , '=' , $id )->select( 's.number')->get();
+       return $resQuery;
     }
 
     public function getReservations(PaginateRequest $request): array
     {
+
         $page = $request->get('page');
         $perPage = $request->get('perPage');
-       $reservation = Reservation::query()->leftJoin('seat as s' , 'reservation.id' , '=' , 's.id')->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' , 's.number','u.email' , 'm.name')->get();
+     //  $reservation = Reservation::query()->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' ,'u.email' , 'm.name')->get();
+    //    $reservation = Reservation::with(['seat' , 'movies' , 'users'])->get();
+      //$seat =
+        $reservation = User::with( ['reservation_movies' , 'reservation' => function($query) {
+        $query->with('seat')->get();
+    }])->get();
+
+
 
         $catCount = DB::table('reservation')->count();
         $resArr = [];
-          foreach($reservation as $res){
-               $resDTO = new ReservationDTO();
-               $resDTO->id = $res->id;
-               $resDTO->email = $res->email;
-               $resDTO->movie = $res->name;
-               $resDTO->quantity = $res->qtypersons;
-               $resDTO->total = $res->totalprice;
-               $resDTO->dateFrom = $res->datefrom;
-               $resDTO->dateTo = $res->dateto;
-              $resDTO->number = $res->number;
-              $resArr[] = $resDTO;
-          }
-   return array('data' =>  $resArr , 'count' => $catCount);
+     // $resArr[] = $reservation;
 
+        $arrSeatNumbers = [];
+          $free = null;
+        foreach($reservation as $res){
+            $resMU = $res->reservation_movies;
+            $resR = $res->reservation;
+
+           foreach($resR as $r){
+                foreach ($r->seat as $key => $value){
+                        //     $key++;
+
+                    $arrSeatNumbers[] = ["id" => $value->id, "number" => $value->number , "free" => $value->free , 'res_id' => $value->pivot->res_id ];
+                  //  $resArr[] = $arrSeatNumbers;
+                }
+
+            }
+
+
+
+            foreach($resMU as $r){
+                $resDTO = new ReservationDTO();
+                $resDTO->id = $r->pivot->id;
+                $resDTO->email = $res->email;
+                $resDTO->movie = $r->name;
+                $resDTO->quantity = $r->pivot->qtypersons;
+                $resDTO->total = $r->pivot->totalprice;
+                $resDTO->dateFrom = $r->pivot->datefrom;
+                $resDTO->dateTo = $r->pivot->dateto;
+                $resDTO->seat = $arrSeatNumbers;
+             $resArr[] =  $resDTO;
+            }
+
+        }
+
+
+
+   //return array('data' =>  $resArr , 'count' => $catCount);
+        return  $resArr;
     }
 
     public function findReservation(int $id): ReservationDTO
     {
-        $res = Reservation::query()->leftJoin('seat as s' , 'reservation.id' , '=' , 's.id')->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' , 's.number','u.email' , 'm.name')->where('reservation.id' , '=' , $id)->first();
+        $res = Reservation::query()->join('movies as m' , 'reservation.movie_id' , '=' , 'm.id')->join('users as u' , 'reservation.user_id' , '=' , 'u.id')->select('reservation.*' ,'u.email' , 'm.name')->where('reservation.id' , '=' , $id)->first();
         $resDTO = new ReservationDTO();
         $resDTO->id = $res->id;
-        $resDTO->user = $res->email;
+        $resDTO->email = $res->email;
         $resDTO->movie = $res->name;
         $resDTO->quantity = $res->qtypersons;
         $resDTO->total = $res->totalprice;
         $resDTO->dateFrom = $res->datefrom;
         $resDTO->dateTo = $res->dateto;
-        $resDTO->number = $res->number;
+      //  $resDTO->number = $res->number;
+        $resDTO->number = $this->queryRes( $res->id);
        return $resDTO;
     }
 
@@ -72,7 +111,7 @@ class ReservationService extends BaseService implements ReservationContract
            $qty = $request->get('qty');
            $priceOfTehno = $request->get('priceOfTehno');
 
-           $total = $priceOfTehno * $qty;
+           $total = floatval($priceOfTehno) * intval($qty);
 
            $dateFrom = Carbon::now()->toDateTime();
          //  $dateTo = $request->get('dateto');
@@ -92,40 +131,52 @@ class ReservationService extends BaseService implements ReservationContract
         $resAdd->save();
 
 
-      /*  $seat = Seat::create([
-            'number' => $number,
-            're_id' =>  DB::getPdo()->lastInsertId(),
-            'created_at' => Carbon::now()->toDateTime()
-        ]);
-
-        $seat->save();*/
 
         $resAddArr = [];
+      //  $seatUpdArr = [];
+        foreach($number as $res) {
 
-        foreach ($number as $res) {
             $arr = [
-                'number'  => $res,
-                're_id' => $resAdd->id ,
+                'res_id'  => $resAdd->id,
+                'seat_id' => $res ,
                 'created_at' => Carbon::now()->toDateTime()
             ];
+
             $resAddArr[] = $arr;
         }
 
-        Seat::insert($resAddArr);
+        $seatUp = Seat::query()->whereIn('number' , $number)->where('free' , self::$free);
+        $seatUp->update(['free' => self::$reserved , 'updated_at' => Carbon::now()->toDateTime()]);
+
+     /*   foreach ($number as $res) {
+            $arrSeat = [
+                'id'  => $res,
+                'free' => self::$free ,
+                'updated_at' => Carbon::now()->toDateTime()
+            ];
+            $seatUpdArr[] = $arrSeat;
+        }*/
+
+      /*  if(count($number) == 1){
+            Seat::whereIn('id' , $number)->update($arrSeat);
+        }else{
+            Seat::whereIn('id' , $number)->update($seatUpdArr);
+        }*/
+        ReservationSeat::insert($resAddArr);
 
     }
 
     public function addReservation(ReservationAdminRequest $request)
     {
 
-        $this->userId = auth()->id();
+        $this->userId = $request->get('userId');
         $movieId = $request->get('movieId');
         $qty = $request->get('qty');
         $total = $request->get('total');
 
         $dateFrom = $request->get('datefrom');
         $dateTo = $request->get('dateto');
-        $number = $request->get('number');
+        $number = $request->get('numbId');
         $resAdd = Reservation::create([
             'user_id' => $this->userId,
             'movie_id' => $movieId,
@@ -139,42 +190,34 @@ class ReservationService extends BaseService implements ReservationContract
         $resAdd->save();
 
 
-        /*  $seat = Seat::create([
-              'number' => $number,
-              're_id' =>  DB::getPdo()->lastInsertId(),
-              'created_at' => Carbon::now()->toDateTime()
-          ]);
-
-          $seat->save();*/
 
         $resAddArr = [];
 
         foreach ($number as $res) {
             $arr = [
-                'number'  => $res,
-                're_id' => $resAdd->id ,
+                'res_id'  => $resAdd->id,
+                'seat_id' =>  $res,
                 'created_at' => Carbon::now()->toDateTime()
             ];
             $resAddArr[] = $arr;
         }
 
-        Seat::insert($resAddArr);
+        ReservationSeat::insert($resAddArr);
 
     }
 
 
     public function modifyReservation(ReservationAdminRequest $request ,int $id)
     {
-     //   $userId = $request->get('userId');
-        $this->userId = auth()->id();
+        $this->userId = $request->get('userId');
         $movieId = $request->get('movieId');
         $qty = $request->get('qty');
         $total = $request->get('total');
         $dateFrom = $request->get('datefrom');
         $dateTo = $request->get('dateto');
-        $number = $request->get('number');
-        $res = Reservation::where('movie_id' , $id);
-        $res->update([
+        $number = $request->get('numbId');
+        $resUp = Reservation::findOrFail($id);
+        $resUp->update([
             'user_id' => $this->userId,
             'movie_id' => $movieId,
             'qtypersons' => $qty,
@@ -184,30 +227,34 @@ class ReservationService extends BaseService implements ReservationContract
             'updated_at' => Carbon::now()->toDateTime()
         ]);
 
-      /*  $seat = Seat::where('re_id' , $id);
-        $seat->update([
-            'number' => $number,
-            'updated_at' => Carbon::now()->toDateTime()
-        ]);*/
-
         $resUpArr = [];
 
         foreach ($number as $res) {
+
             $arr = [
-                'number'  => $res,
-                're_id' =>  $id,
+                'res_id'  => $id,
+                'seat_id' =>  $res,
                 'updated_at' => Carbon::now()->toDateTime()
             ];
             $resUpArr[] = $arr;
         }
-        Seat::findOrFail($id)->update($resUpArr);
+      //  $upResSeat = ReservationSeat::where('res_id' , $id);
+      /*  if($upResSeat != null ) {
+            $upResSeat->update($resUpArr);
+        }*/
+             if(count($number) == 1){
+                 ReservationSeat::where('res_id' , $id)->update($arr);
+             }else{
+                 ReservationSeat::where('res_id' , $id)->update($resUpArr);
+             }
+
 
     }
 
     public function deleteReservation(int $id)
     {
       //  $res = Reservation::findOrFail($id);
-        $res = Seat::with('seat')->where( 're_id' , $id);
+        $res = Reservation::findOrFail($id);
         if ($res != null ) {
             $res->delete();
         }

@@ -29,13 +29,26 @@ class Movies extends  Model
         return $this->hasOne(Reservation::class);
     }*/
 
-    public function reservation(){
-        return $this->hasMany(Reservation::class , 'movie_id' , 'id , ');
+   /* public function reservation(){
+        return $this->hasMany(Reservation::class , 'movie_id' , 'id');
+    }*/
+
+    public function reservation_users(){
+        return $this->belongsToMany(User::class , 'reservation','movie_id' , 'user_id');
     }
 
-    public function  pricelist(){
+/*
+    public function  pricelists(){
         return $this->hasMany( Pricelists::class, 'movie_id' , 'id');
     }
+*/
 
+   /* public function  pricelistCategories(){
+        return $this->belongsToMany( Categories::class, 'pricelist' , 'movie_id' , 'cat_id' )->withPivot('price', 'id');
+    }*/
+
+    public function pricelist_categories(){
+        return $this->belongsToMany( Categories::class, 'pricelist' , 'movie_id' , 'cat_id' )->withPivot('price', 'id');
+    }
 
 }
